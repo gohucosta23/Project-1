@@ -16,3 +16,28 @@ body{
 .banner {
     background-color: brown;
 }
+
+.newO-background {
+    background: url("images/new-orleans.jpg");
+    background-size: cover;
+}
+
+.ny-background {
+    background: url("images/dining-room-nyc.jpg");
+    background-size: cover;
+}
+
+.boston-background {
+    background: url("images/boston.png");
+    background-size: cover;
+}
+
+.chi-background {
+    background: url("images/chicago.jpg");
+    background-size: cover;
+}
+
+.miami-background {
+    background: url("images/south-beach-non-diet.jpeg");
+    background-size: cover;
+}
