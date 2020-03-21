@@ -31,17 +31,19 @@ window.onload = function () {
 
     getRecipes();
 
+    //what is in common?
+    // they all have a class of cities
+    // before adding correct class, remove any existing class
+    $('.cities').on('click', function(e) {
+        $('body').removeClass();
+        $('body').addClass(`${e.target.id}-background`);
+    })
+
     var newO = $(".newO");
     newO.on("click", function () {
         var body = $("#body");
         body.addClass("newO-background");
     });
-
-    var ny = $(".ny");
-    ny.on("click", function() {
-        var body = $("#body");
-        body.addClass("ny-background");
-    })
 
     var ny = $(".ny");
     ny.on("click", function() {

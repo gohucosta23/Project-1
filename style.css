@@ -20,6 +20,7 @@ body{
 .newO-background {
     background: url("images/new-orleans.jpg");
     background-size: cover;
+    cursor: pointer;
 }
 
 .ny-background {
@@ -40,4 +41,8 @@ body{
 .miami-background {
     background: url("images/south-beach-non-diet.jpeg");
     background-size: cover;
+}
+
+li {
+     cursor: pointer;
 }
