@@ -4,76 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.i">
     <title>Random numbers</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    header {
-        background-color: blue;
-        height: 200px;
-        font-size: 50px;
-        text-align: center;
-    }
-    section {
-        background-color: grey;        
-        width: 300px;
-        height: 500px;
-        float: left;
-    }
-    h4 {
-        font-size: 30px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-    a {
-        display: block;
-        margin-bottom: 20px;
-        font-size: 20px;
-        
-    }
-    #breweryLink{
-        font-size: 16;
-        font-weight: bolder;
-    }
-    #fishingReport {
-        background-color: grey;
-        width: 950px;
-        float: left;
-        height: 500px;
-        margin-left: 50px;
-        margin-bottom: 50px;
-        overflow: scroll;
-    }
-    #mainSection {
-        float: left;        
-        margin-bottom: 20px;
-    }
-    #info {
-        clear: both;  
-        height: 200px;
-        background-color: grey;
-        width: 1300px;
-    }
-    li{
-        list-style: none;
-        font-weight: bolder;
-        font-size: 16px;
-    }
-    .breweryOptions{
-        border: 1px black solid;
-        background-color: beige;
-    }
-    #bName {
-        font-size: 20px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-weight: bolder;
-    }
+   body {
+       background-color: aqua;
+   }
 </style>
 <body>
-
-    <header>RIGS & RODS</header>
+    <header></header>
       <div>
         <h4>Navigation menu</h4>
         <div id="mainSection">
@@ -83,60 +23,59 @@
             <a href="#">Accomodations</a>
             <a id="brewery" href="#">Cool off(drinks)</a>
         </section>
-        <div id="fishingReport">VA Beach fishing report</div>
+        <div class="carousel">
+            <a id='image1' class="carousel-item" href="#one!">Hello</a>
+            <a id='image2' class="carousel-item" href="#two!">Hi</a>
+            <a id='image3' class="carousel-item" href="#three!">Mengao</a>
+            <a id='image4' class="carousel-item" href="#four!">Eh</a>
+            <a id='image5' class="carousel-item" href="#five!">Campeao</a>
+          </div>
         <footer id="info">Info</footer>
         </div>
     </div>
     </div>
-  
     <script>
-       
-        var queryURL = "https://api.openbrewerydb.org/breweries?by_city=virginia_beach";
+       window.onload = function(){
+var apiKey = "3ecacdc43749b0d1697331f53d557613";
+var appId = "b81fa997";
+var cuisine = "portuguese";
+var queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=50`;  
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+function getRecipes(){
+$.ajax({
+    url : queryURL,
+    method : "GET"
+}).then(function(response){
+    for (var i = 0; i < response.hits.length; i++){
+        var label = response.hits[i].recipe.label;
+        var url = response.hits[i].recipe.url;
+        var calories = Math.floor(response.hits[i].recipe.calories.toFixed(0) / response.hits[i].recipe.yield);
+        var image = response.hits[i].recipe.image;
+        const images= [$('#image1'), $('#image2'),$('#image3'),$('#image4'),$('#image5')];
+        console.log(label);
+        console.log(url);
+        console.log(image[0]);
+            for (var j = 0; j < response.hits[i].recipe.ingredientLines.length; j++ ){                
+                var ingredients = response.hits[i].recipe.ingredientLines[j];
+            }
+            // for (var i = 0; i < 5; i++){
+            //     images[i].text(image[i]);
+            // }
 
-        function breweryFinder(){
-
-        $.ajax ({
-            url : queryURL,
-            method : "GET"
-        }).then(function(response){
-
-
-            for (var i = 0; i < response.length; i++){
-
-            
-            var brewerySelections = $("<ul class='breweryOptions'>");
-            $("#fishingReport").append(brewerySelections);
-
-            brewerySelections.append(`
-
-                <li id="bName">${response[i].name}</li>
-                <li>${response[i].street}</li>
-                <li>${response[i].city}</li>
-                <li>Phone : ${response[i].phone}</li>
-                <a id="breweryLink" href = "${response[i].website_url}">${response[i].website_url}</a>
-
-            `)
-            
-        }           
-        })
-    }
-    $("#brewery").on("click", function(){
-
-    breweryFinder();
+}
 })
-
-
-
+}
+getRecipes();
+}
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPoiiEjwBvKU7imGFAViwwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.i/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E5iY2D1uUdjiO3uMBJnjuUD4Ih7YwaYd1iqfktjiUod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 </body>
 </html>
