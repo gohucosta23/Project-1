@@ -20,6 +20,7 @@ body{
 .newO-background {
     background: url("images/new-orleans.jpg");
     background-size: cover;
+    cursor: pointer;
 }
 
 .ny-background {
@@ -42,6 +43,6 @@ body{
     background-size: cover;
 }
 
-/* li {
-    padding-top: 5px;
-} */
+li {
+     cursor: pointer;
+}
