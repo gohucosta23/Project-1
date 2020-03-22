@@ -1,142 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.i">
-    <title>Random numbers</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Create your own Recipes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <style>
-    header {
-        background-color: blue;
-        height: 200px;
-        font-size: 50px;
-        text-align: center;
+    body {
+        background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 100%;
     }
-    section {
-        background-color: grey;        
-        width: 300px;
-        height: 500px;
-        float: left;
+    .recipe-display {
+        width: 500px;
+        margin-right: 100px;
     }
-    h4 {
-        font-size: 30px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    .input-display {
+        color: black;
+        font-size: 16px;
+        font-weight: bolder;
+        opacity: 5;
+        width: 350px;
+
     }
-    a {
-        display: block;
-        margin-bottom: 20px;
-        font-size: 20px;
+    .recipe-input {
+        background-color: white;
+        margin-top: 100px;
+        height: 400px;
+        padding: 50px;
+        opacity: 1;
+        width: 400px;
+    }
+    .carousel {
+
+        margin-top: 100px;
+        overflow: hidden;    
         
     }
-    #breweryLink{
-        font-size: 16;
-        font-weight: bolder;
-    }
-    #fishingReport {
-        background-color: grey;
-        width: 950px;
-        float: left;
-        height: 500px;
-        margin-left: 50px;
-        margin-bottom: 50px;
-        overflow: scroll;
-    }
-    #mainSection {
-        float: left;        
-        margin-bottom: 20px;
-    }
-    #info {
-        clear: both;  
-        height: 200px;
-        background-color: grey;
-        width: 1300px;
-    }
-    li{
-        list-style: none;
-        font-weight: bolder;
-        font-size: 16px;
-    }
-    .breweryOptions{
+    .carousel-item {
+       
         border: 1px black solid;
-        background-color: beige;
-    }
-    #bName {
-        font-size: 20px;
+        text-align: center;
+        background-color: grey;
+        color: white;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-weight: bolder;
-    }
-</style>
-<body>
+        overflow: visible;
+        
 
-    <header>RIGS & RODS</header>
-      <div>
-        <h4>Navigation menu</h4>
-        <div id="mainSection">
-        <section>
-            <a href="#">Fishing</a>
-            <a href="#">Rentals</a>
-            <a href="#">Accomodations</a>
-            <a id="brewery" href="#">Cool off(drinks)</a>
-        </section>
-        <div id="fishingReport">VA Beach fishing report</div>
-        <footer id="info">Info</footer>
+    }
+    #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten {
+        height: 370px;
+        width: 340px;
+    }
+    .hide {
+        display: none;
+    }
+
+</style>
+
+<body>
+    <nav>
+        <div class="nav-wrapper indigo">
+        <div class="container ">
+          <a class="brand-logo">Boteco Virtual</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fun.html">Create your own Recipes</a></li>
+            <li><a href="collapsible.html">Create your own Cocktails</a></li>
+          </ul>
+        </div>
+        </div>
+      </nav>
+        <div class="row">
+            <div class="col s6">
+                <div class="container recipe-input">
+                <div class="row">
+                <div class="input-field col s6">
+                    <input id="cuisineInput" class="input-display" placeholder="Cuisine" type="text" >
+                    <label class="input-display">Type of Cuisine (Optional)</label>
+                </div>
+                </div>
+                <div class="row">
+                <div class="input-field col s6">
+                    <input id="recipeInput"  class="input-display" placeholder="Favorite Recipe"  type="text">
+                    <label class="input-display">Type a Recipe (Optional)</label>
+                </div>
+                </div>
+            </div>
+        </div>   
+
+            <div class="col s6">
+                <div class="container recipe-display"> 
+                    <div class="carousel container right">
+                        <div class="carousel-item z-depth-5" id='one'></div>
+                        <div class="carousel-item z-depth-5" id='two'></div>
+                        <div class="carousel-item z-depth-5" id='three'></div>
+                        <div class="carousel-item z-depth-5" id='four'></div>
+                        <div class="carousel-item z-depth-5" id='five'></div>
+                        <div class="carousel-item z-depth-5" id='six'></div>
+                        <div class="carousel-item z-depth-5" id='seven'></div>
+                        <div class="carousel-item z-depth-5" id='eight'></div>
+                        <div class="carousel-item z-depth-5" id='nine'></div>
+                        <div class="carousel-item z-depth-5" id='ten'></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+   
+        
+
+            
         </div>
     </div>
     </div>
-  
+
     <script>
-       
-        var queryURL = "https://api.openbrewerydb.org/breweries?by_city=virginia_beach";
 
-        function breweryFinder(){
+        window.onload = function () {
 
-        $.ajax ({
-            url : queryURL,
-            method : "GET"
-        }).then(function(response){
+            var apiKey = "3ecacdc43749b0d1697331f53d557613";
+            var appId = "b81fa997";
+            var cuisine = $("#cuisineInput").val();
+            var recipe = $("#recipeInput").val();
+            var queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
 
+            var recipes = [];
+            var display = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
 
-            for (var i = 0; i < response.length; i++){
+            $(document).ready(function () {
+                $('.carousel').carousel();
+        
+            });
+            $(document).ready(function(){
+                $('.tabs').tabs();
+            });
+            // $(document).ready(function() {
+            //     Materialize.updateTextFields();
+            // });
+                        
+            function appendRecipes(recipes) {
 
-            
-            var brewerySelections = $("<ul class='breweryOptions'>");
-            $("#fishingReport").append(brewerySelections);
+            for (var i = 0; i < display.length; i++){
 
-            brewerySelections.append(`
+                var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);
 
-                <li id="bName">${response[i].name}</li>
-                <li>${response[i].street}</li>
-                <li>${response[i].city}</li>
-                <li>Phone : ${response[i].phone}</li>
-                <a id="breweryLink" href = "${response[i].website_url}">${response[i].website_url}</a>
+                $(`#${display[i]}`).append(`
 
-            `)
-            
-        }           
-        })
-    }
-    $("#brewery").on("click", function(){
+                    <h5>${recipes[i].info.label}</h5>
+                    <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "200px" height = "200px"></a> 
+                    <p>Calories per serving : ${calories}</p>
+                    <p>Servings : ${recipes[i].info.yield}</p>
+                    `);
+                $(".carousel").append($(`${display[i]}`));
+               }
 
-    breweryFinder();
-})
+            }
+        
+            function getRecipes(cuisine) {
 
+                $.ajax({
 
+                    url: queryURL,
+                    method: "GET"
+
+                }).then(function (response) {
+                    console.log(queryURL)
+                    var result = [];
+                    for (var i = 0; i < response.hits.length; i++) {
+                        var tempObj = { type: response.q, info: response.hits[i].recipe };
+                        result.push(tempObj);
+                    }
+                    console.log('inThen: ', result);
+                    recipes = result;
+                    appendRecipes(result);
+                })
+
+            }
+            function searchCuisine(cuisine){
+
+                queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
+                
+                getRecipes();
+
+            }
+            function searchRecipe(recipe){
+
+                queryURL = `https://api.edamam.com/search?q=${recipe}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
+
+                getRecipes();
+
+                }
+
+            $("#cuisineInput").on("keydown", function(event){
+                var keypressed = event.keyCode || event.which;
+                var cuisine = $("#cuisineInput").val();
+                if (keypressed == 13) {                    
+                    searchCuisine(cuisine);
+                    // $(".recipe-display").removeClass("hide");
+                }
+            })
+            $("#recipeInput").on("keydown", function(event){
+                var keypressed = event.keyCode || event.which;
+                var recipe = $("#recipeInput").val();
+                if (keypressed == 13) {                    
+                    searchRecipe(recipe);
+                }
+            })
+
+           
+            // getRecipes();
+
+            // <div class="carousel-item active" style="z-index: 0; opacity: 1; visibility: visible; 
+            // transform: translateX(293.5px) translateY(-24px) translateX(0px) translateX(0px) translateZ(0px);"></div>
+        }
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPoiiEjwBvKU7imGFAViwwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.i/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E5iY2D1uUdjiO3uMBJnjuUD4Ih7YwaYd1iqfktjiUod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>
