@@ -4,15 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.i">
+<<<<<<< HEAD
+    <title>Create your own Recipes</title>
+=======
     <title>Random numbers</title>
 
+>>>>>>> 152bb8b7ff2d8f45f91c43997fa777aeb3ce059a
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 <style>
+    body {
+        background-image: url("https://images.pexels.com/photos/326268/pexels-photo-326268.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 100%;
+    }
+    .recipe-display {
+        width: 500px;
+        margin-right: 100px;
+    }
     .carousel {
-        overflow: visible;
+
+        margin-top: 100px;
+        overflow: hidden;
+        
         
     }
     .carousel-item {
@@ -22,40 +39,44 @@
         background-color: grey;
         color: white;
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        overflow: visible;
+        
 
     }
     #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten {
-        height: 450px;
-        width: 430px;
-    }
-    
-
-    header {
-        background-color: blue;
-        height: 200px;
-        font-size: 50px;
-        text-align: center;
+        height: 370px;
+        width: 340px;
     }
 
-    section {
-        background-color: grey;
-        width: 300px;
-        height: 500px;
-        float: left;
-    }
+<<<<<<< HEAD
+</style>
 
-    h4 {
-        font-size: 30px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    }
-
-    a {
-        display: block;
-        margin-bottom: 20px;
-        font-size: 20px;
-
-    }
-
+<body>
+    <nav>
+        <div class="nav-wrapper indigo">
+        <div class="container ">
+          <a href="#" class="brand-logo">Virtual Chef</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="fun.html">Create your own Recipes</a></li>
+            <li><a href="collapsible.html">Create your own Cocktails</a></li>
+          </ul>
+        </div>
+        </div>
+      </nav>
+        <div class="container recipe-display"> 
+            <div class="carousel container">
+                <div class="carousel-item z-depth-5" id='one'></div>
+                <div class="carousel-item z-depth-5" id='two'></div>
+                <div class="carousel-item z-depth-5" id='three'></div>
+                <div class="carousel-item z-depth-5" id='four'></div>
+                <div class="carousel-item z-depth-5" id='five'></div>
+                <div class="carousel-item z-depth-5" id='six'></div>
+                <div class="carousel-item z-depth-5" id='seven'></div>
+                <div class="carousel-item z-depth-5" id='eight'></div>
+                <div class="carousel-item z-depth-5" id='nine'></div>
+                <div class="carousel-item z-depth-5" id='ten'></div>
+=======
     #breweryLink {
         font-size: 16;
         font-weight: bolder;
@@ -118,8 +139,10 @@
                 <div class="carousel-item" id='eight'></div>
                 <div class="carousel-item" id='nine'></div>
                 <div class="carousel-item" id='ten'></div>
+>>>>>>> 152bb8b7ff2d8f45f91c43997fa777aeb3ce059a
             </div>
         </div>
+        
 
             
         </div>
@@ -132,52 +155,38 @@
 
             var apiKey = "3ecacdc43749b0d1697331f53d557613";
             var appId = "b81fa997";
-            var cuisine = "portuguese";
+            var cuisine = "american";
             var queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
 
             var recipes = [];
-            var display = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+            var display = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+
             $(document).ready(function () {
                 $('.carousel').carousel();
         
             });
-            $('.carousel.carousel-slider').carousel({
-                fullWidth: true
+            $(document).ready(function(){
+                $('.tabs').tabs();
             });
-           
-        
+                        
             function appendRecipes(recipes) {
 
-                var calories = Math.floor(recipes[0].info.calories / recipes[0].info.yield);
-
-                console.log(recipes[0].info.label);
-                console.log(recipes[0].info.image);
-                console.log(recipes[0].info.url);
-                console.log(calories);
-                console.log(recipes[0].info.yield);
-               
-               for (var i = 0; i < display.length; i++){
+            for (var i = 0; i < display.length; i++){
 
                 var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);
 
                 $(`#${display[i]}`).append(`
 
-                    <h5>${recipes[0].info.label}</h5>
-                    <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image}></a>                    
+                    <h5>${recipes[i].info.label}</h5>
+                    <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "200px" height = "200px"></a> 
                     <p>Calories per serving : ${calories}</p>
-                    <p>Servingds : ${recipes[i].info.yield}</p>
-
+                    <p>Servings : ${recipes[i].info.yield}</p>
                     `);
                 $(".carousel").append($(`${display[i]}`));
                }
 
-
-
-
             }
         
-
-
             function getRecipes() {
 
                 $.ajax({
@@ -199,43 +208,11 @@
 
             }
 
-            //     for (var i = 0; i < response.hits.length; i++){
-
-            //         var label = response.hits[i].recipe.label;
-            //         var url = response.hits[i].recipe.url;
-            //         var calories = Math.floor(response.hits[i].recipe.calories.toFixed(0) / response.hits[i].recipe.yield);
-            //         var image = response.hits[i].recipe.image;
-            //         var servings = response.hits[i].recipe.yield;
-            //         console.log('label: ', label);
-            //         console.log('URL: ', url);
-            //             for (var j = 0; j < response.hits[i].recipe.ingredientLines.length; j++ ){                
-            //                 var ingredients = response.hits[i].recipe.ingredientLines[j];
-            //             }
-            //             var display = $("<div>");
-            //                 display.append(`
-            //                     <p>${label}</p>
-            //                     <img src =${image}>
-            //                     <p>${url}</p>
-            //                     <p>${calories}</p>
-            //                     <p>${servings}</p>
-            //                 `)
-            //                 console.log(display)
-            //             for (var k = 0; k < 10; k++){
-
-            //                 var recipeDisplay = $("<a class='carousel-item' href='#five!''></a>");
-            //                 recipeDisplay.attr("id","display"+k);
-            //                 $(".carousel").append(recipeDisplay);
-            //                 recipeDisplay.text(display)
-
-            //             }
-
-
-
-            // 
-
+           
             getRecipes();
 
-
+            // <div class="carousel-item active" style="z-index: 0; opacity: 1; visibility: visible; 
+            // transform: translateX(293.5px) translateY(-24px) translateX(0px) translateX(0px) translateZ(0px);"></div>
         }
 
     </script>
