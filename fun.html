@@ -6,76 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.i">
     <title>Create your own Recipes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="fun.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<style>
-    body {
-        background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-        background-repeat: no-repeat;
-        background-position: left center;
-        background-size: 100%;
-    }
-    .recipe-display {
-        width: 500px;
-        margin-right: 100px;
-    }
-    .input-display {
-        color: black;
-        font-size: 16px;
-        font-weight: bolder;
-        opacity: 5;
-        width: 350px;
-
-    }
-    .recipe-input {
-        background-color: white;
-        margin-top: 100px;
-        height: 400px;
-        padding: 50px;
-        opacity: 1;
-        width: 400px;
-    }
-    .carousel {
-
-        margin-top: 100px;
-        overflow: hidden;    
-        
-    }
-    .carousel-item {
-       
-        border: 1px black solid;
-        text-align: center;
-        background-color: grey;
-        color: white;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        overflow: visible;
-        
-
-    }
-    #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #ten {
-        height: 370px;
-        width: 340px;
-    }
-    .hide {
-        display: none;
-    }
-
-</style>
 
 <body>
     <nav>
         <div class="nav-wrapper indigo">
-        <div class="container ">
-          <a class="brand-logo">Boteco Virtual</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="fun.html">Create your own Recipes</a></li>
-            <li><a href="collapsible.html">Create your own Cocktails</a></li>
-          </ul>
-        </div>
+            <div class="container ">
+                <a class="brand-logo">Boteco Virtual</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="fun.html">Recipes</a></li>
+                    <li><a href="collapsible.html">Cocktails</a></li>
+                </ul>   
+            </div>
         </div>
       </nav>
+        <div>
+            <div class="row" id="cuisine-type">
+                <div class="col s1">                    
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col s6">
                 <div class="container recipe-input">
@@ -97,7 +51,7 @@
             <div class="col s6">
                 <div class="container recipe-display"> 
                     <div class="carousel container right">
-                        <div class="carousel-item z-depth-5" id='one'></div>
+                        <!-- <div class="carousel-item z-depth-5" id='one'></div>
                         <div class="carousel-item z-depth-5" id='two'></div>
                         <div class="carousel-item z-depth-5" id='three'></div>
                         <div class="carousel-item z-depth-5" id='four'></div>
@@ -106,29 +60,35 @@
                         <div class="carousel-item z-depth-5" id='seven'></div>
                         <div class="carousel-item z-depth-5" id='eight'></div>
                         <div class="carousel-item z-depth-5" id='nine'></div>
-                        <div class="carousel-item z-depth-5" id='ten'></div>
+                        <div class="carousel-item z-depth-5" id='ten'></div> -->
                     </div>
                 </div>
             </div>
-
-        </div>
-   
-        
-
-            
+        </div>        
         </div>
     </div>
     </div>
 
     <script>
 
-        window.onload = function () {
+        $(document).ready(function () {
 
+            var images = ["https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRInSQ1nPRiuGI8RM9KBKktKQiYWZDAo2h6337alkcUC2jl8ljB",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfVOpPNbaY--0EMzBjhVma5VzBjPaqjeWhHn1uo_YHr96gpsiX",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRajM0BreC2G8SQP73NCLKpkJdH4MlJUwD5FRFkeWHh9wg9eIv",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzpZewtNMAncAPqX6ybw9WqQ9S9il2PGXio4bI8LmKnZJi2FTc",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQT302oOUQHfApUHnL_t6qFriZ0817JxikRzvY2KqT5f6ozid18",
+            "https://www.sheknows.com/wp-content/uploads/2018/08/ti8wzfbbvdspxo8dg1ci.jpeg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRLzcnZXcCOp06zZ8giV0FmIge2_T4iai_ySPlgGxnAQ6yjSdX", 
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPGlJvv0HhZgKbiB9G4T6f--Wkwkuk4Ncz9hXGt7d258K8PGc6"];
+
+            var names = ["American", "Asian", "South American", "Japanese", "Vegetarian", "Chinese", "Indian", "Mediterranean", "British" ];
             var apiKey = "3ecacdc43749b0d1697331f53d557613";
             var appId = "b81fa997";
             var cuisine = $("#cuisineInput").val();
             var recipe = $("#recipeInput").val();
-            var queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
+            
 
             var recipes = [];
             var display = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
@@ -140,37 +100,102 @@
             $(document).ready(function(){
                 $('.tabs').tabs();
             });
-            // $(document).ready(function() {
-            //     Materialize.updateTextFields();
-            // });
+
+            for (var i = 0; i < images.length; i++){
+            
+            var links = $(`            
+            <div class="col s1">
+                    <div class="row">
+                        <a class="cuisine-links" data-name = "${names[i]}" href = "#"><img src="${images[i]}" width="40px" height="40px"></a>
+                    </div>
+                    <div class="row">
+                        <span class="cuisine-type">${names[i]}</span>
+                    </div>
+                </div>            
+            `)
+                       
+           $("#cuisine-type").append(links);
+       
+        }
+        $(document).on("click", ".cuisine-links", function(){
+            
+            cuisine = $(this).attr("data-name");
+            searchCuisine(cuisine);
+
+        });
+
+            $("#cuisineInput").on("keydown", function(event){
+                
+                var keypressed = event.keyCode || event.which;
+                var cuisine = $("#cuisineInput").val();
+                if (keypressed == 13) {                    
+                    searchCuisine(cuisine);
+                    // $(".recipe-display").removeClass("hide");
+                }                
+            });
+
+            $("#recipeInput").on("keydown", function(event){
+                var keypressed = event.keyCode || event.which;
+                var recipe = $("#recipeInput").val();
+                if (keypressed == 13) {                    
+                    searchRecipe(recipe);
+                }
+            });
+
+            function searchCuisine(cuisine){
+                
+                queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
+
+                getRecipes();
+
+            };
+
+            function searchRecipe(recipe){
+
+               
+                queryURL = `https://api.edamam.com/search?q=${recipe}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
+
+                getRecipes();
+
+            };
                         
             function appendRecipes(recipes) {
+                
+                for (var i = 0; i < recipes.length; i++){
 
-            for (var i = 0; i < display.length; i++){
+                    var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);
 
-                var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);
+                   
 
-                $(`#${display[i]}`).append(`
+                            var displayRecipes = $(`
+                            <div class="carousel-item">
+                                <h5 id="recipeTitle">${recipes[i].info.label}</h5>
+                                <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "300px" height = "300px"></a> 
+                                <p>Calories per serving : ${calories}</p>
+                                <p>Servings : ${recipes[i].info.yield}</p>                 
+                                </div>
+                            `)
+                            $('.carousel').append(displayRecipes); 
+                            displayRecipes.attr("id", "carouselItem"+[i]);
+                            $("#carouselItem"+[i]).css({width: "500px", height: "600px" });
+                            $("#carouselItem"+[i]).addClass("carousel-item ");
 
-                    <h5>${recipes[i].info.label}</h5>
-                    <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "200px" height = "200px"></a> 
-                    <p>Calories per serving : ${calories}</p>
-                    <p>Servings : ${recipes[i].info.yield}</p>
-                    `);
-                $(".carousel").append($(`${display[i]}`));
-               }
+                            $('.carousel').carousel();             
+                    
+                }
 
-            }
+                }
         
             function getRecipes(cuisine) {
-
+                var queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
                 $.ajax({
 
                     url: queryURL,
                     method: "GET"
 
                 }).then(function (response) {
-                    console.log(queryURL)
+                 
+                    
                     var result = [];
                     for (var i = 0; i < response.hits.length; i++) {
                         var tempObj = { type: response.q, info: response.hits[i].recipe };
@@ -181,44 +206,8 @@
                     appendRecipes(result);
                 })
 
-            }
-            function searchCuisine(cuisine){
-
-                queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
-                
-                getRecipes();
-
-            }
-            function searchRecipe(recipe){
-
-                queryURL = `https://api.edamam.com/search?q=${recipe}&app_id=${appId}&app_key=${apiKey}&from=0&to=10`;
-
-                getRecipes();
-
-                }
-
-            $("#cuisineInput").on("keydown", function(event){
-                var keypressed = event.keyCode || event.which;
-                var cuisine = $("#cuisineInput").val();
-                if (keypressed == 13) {                    
-                    searchCuisine(cuisine);
-                    // $(".recipe-display").removeClass("hide");
-                }
-            })
-            $("#recipeInput").on("keydown", function(event){
-                var keypressed = event.keyCode || event.which;
-                var recipe = $("#recipeInput").val();
-                if (keypressed == 13) {                    
-                    searchRecipe(recipe);
-                }
-            })
-
-           
-            // getRecipes();
-
-            // <div class="carousel-item active" style="z-index: 0; opacity: 1; visibility: visible; 
-            // transform: translateX(293.5px) translateY(-24px) translateX(0px) translateX(0px) translateZ(0px);"></div>
-        }
+            }                     
+        })
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
