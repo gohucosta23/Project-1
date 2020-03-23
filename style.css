@@ -4,13 +4,8 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: aqua;
 }
-
-.cities {
-    list-style-type: none;
-    display: inline;
-    margin-left: 20px;
-    color: white;
-    background: brown;
+.cities{
+    background-color: coral;
 }
 
 .banner {
