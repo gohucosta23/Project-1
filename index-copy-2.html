@@ -4,12 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocteis de Rio</title>
+    <title>Cocktail Recipes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Noticia+Text|Spicy+Rice&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 
 </head>
 <style>
+    .search-label {
+        font-size: 20px;
+    }
+    
     #cocktailInput {
         width: 20%;
     }
@@ -17,6 +23,10 @@
     .cocktail-image {
         width: 20%;
 
+    }
+
+    .images {
+        margin-top: 20px;
     }
 
     .background-container {
@@ -45,6 +55,8 @@
     }
 
     .search-container {
+        margin-top: 15px;
+        margin-left: 10px;
         float: left;
     }
 
@@ -59,6 +71,26 @@
     .cocktail-search {
         cursor: pointer;
     }
+
+    .drink-hits {
+        color: white;
+        font-size: 20px;
+        margin-left: 30px;
+
+    }
+
+    .recipes {
+        font-family: 'Noticia Text', serif;
+        margin-left: 10px;
+        padding-left: 17px;
+        padding-right: 1px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 8%;
+        background: aquamarine;
+    }
+
+
 </style>
 
 <body>
@@ -76,7 +108,7 @@
             </div>
         </nav>
         <div class="search-container">
-            <label for="">Cocktail Search</label>
+            <label class="search-label" for="">Cocktail Search</label>
             <input id="cocktailInput" onfocus="this.value=''" type="text" value="">
             <button id="cocktailSearch">Search</button>
         </div>
@@ -86,7 +118,7 @@
         </ul>
         <div class="container-drinks">
             <h5 class="recipes">Recipes</h5>
-            <h6 class="drink-hits">Drink Hits</h6>
+            <h6 class="drink-hits"></h6>
         </div>
         <!-- <div class="carousel images">
             <a class="carousel-item" id="one"></a>
