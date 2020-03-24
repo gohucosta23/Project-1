@@ -1,0 +1,92 @@
+body {
+    background-image: url("https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 100%;
+}
+.recipe-display {
+    width: 600px;
+    height: 400px;
+    margin-right: 100px;
+    
+}
+.input-display {
+    
+    font-size: 16px;
+    font-weight: bolder;
+    opacity: 5;
+    width: 350px;
+
+}
+.recipe-input {
+    background-color: white;
+    margin-top: 85px;
+    height: 200px;
+    padding: 25px 0px 0px 125px;     
+    width: 400px;
+    border-radius: 50px;
+}
+.recipeInfo {
+    font-size: 16px;
+    font-family: 'PT Sans Narrow', sans-serif;
+
+}
+#recipeTitle {
+    font-family: 'PT Sans Narrow', sans-serif;
+    margin-top: 50px;
+}
+.carousel {
+
+    margin-top: 85px;
+    overflow: hidden;   
+    height: 590px;
+    width: 620px; 
+    
+}
+.carousel-item {
+   
+    border: 1px black solid;
+    text-align: center;
+    background-image: url("https://thumbs.dreamstime.com/b/high-quality-white-paper-texture-background-seamless-square-tile-ready-te-123487149.jpg");
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow: visible;
+    width: 500px;
+    height: 500px;
+    border-radius: 50px;
+    
+
+}
+.slides {
+    height: 400px;
+    width: 400px;
+}
+img {
+    border-radius: 50px;
+    margin-right: 40px;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.cuisine-type {
+    
+    font-size: 10px;
+    margin-left: 30px;
+    font-weight: bolder;
+    
+   
+}
+#cuisine-type {
+    background-color: white;
+    
+}
+
+.row {
+    margin-bottom: 0;
+    text-align: center;
+           
+}
+/* img:hover {
+   
+width: 80px;
+height: 80px;
+} */
