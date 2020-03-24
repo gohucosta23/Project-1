@@ -19,11 +19,6 @@
 
     }
 
-    /* .images {
-       max-width: 250px;
-       min-width: 150px;
-   } */
-
     .background-container {
         background-image: url("https://images.unsplash.com/photo-1507125524815-d9d6dccda1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
         background-size: cover;
@@ -36,14 +31,14 @@
     .history-list {
         display: inline-block;
         list-style-type: none;
-        margin-left: 10px;
+        margin-left: 30px;
+        /* background: blue;
+        width: 49px;
+        padding: 5px;
+        border-radius: 10px;
+        color: white; */
     }
 
-
-    /* .drink-history {
-       float: left;
-       margin-left: 100px;
-   } */
 
     .container-drinks {
         clear: both;
@@ -61,7 +56,9 @@
         margin-top: 20px;
     }
 
-    
+    .cocktail-search {
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -72,14 +69,14 @@
                     <a class="brand-logo">Boteco Virtual</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="fun.html">Create your own Recipes</a></li>
-                        <li><a href="collapsible.html">Create your own Cocktails</a></li>
+                        <li><a href="fun.html">Recipes</a></li>
+                        <li><a href="collapsible.html">Cocktails</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="search-container">
-            <label for="">Pesquisa de Cóctel</label>
+            <label for="">Cocktail Search</label>
             <input id="cocktailInput" onfocus="this.value=''" type="text" value="">
             <button id="cocktailSearch">Search</button>
         </div>
@@ -113,8 +110,9 @@
 
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
+    var drinkHits = $(".drink-hits");
 
-    recipes.hide(); 
+    recipes.hide();
 
     cocktailSearch.on("click", function () {
         var cocktailInput = $("#cocktailInput");
@@ -133,13 +131,15 @@
             var arrLength = Math.min(response.drinks.length, 5);
 
             var recipes = $(".recipes");
-            
+
             recipes.show();
 
             for (var i = 0; i < arrLength; i++) {
                 var drinkHits = $(".drink-hits");
                 var drink = $("<div>");
                 drink.addClass("drink-container-style")
+                var drinkListItem = $("<p>");
+                drinkListItem.text(cocktail);
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
                 // var drink1 = $("<p>");
@@ -163,10 +163,36 @@
 
             var drinkHistory = $(".drink-history");
             var li = $("<li>");
-            li.text(cocktailName);
+            var cocktailBtn = $("<button>");
+            cocktailBtn.addClass("btn btn-primary")
+            cocktailBtn.text(cocktailName);
+            li.append(cocktailBtn);
             li.addClass("history-list");
             drinkHistory.append(li)
 
+        });
+
+       
+            var cocktailBtn = $("<button>");
+            cocktailBtn.addClass("btn btn-primary")
+          
+        cocktailBtn.on("click", function () {
+            var drinkHits = $(".drink-hits");
+            var drink = $("<div>");
+            drink.addClass("drink-container-style")
+            var drinkListItem = $("<p>");
+            drinkListItem.text(cocktail);
+            var cocktail = response.drinks[i].strDrink;
+            var instructions = response.drinks[i].strInstructions;
+            drink.text(cocktail + ": " + instructions);
+            drinkHits.append(drink);
+            var card = $(".images");
+            var image = $("<img>");
+            var choice = response.drinks[i].strDrinkThumb;
+            image.attr("src", choice);
+            image.addClass("cocktail-image");
+            var carouselItem = $(".carousel-item");
+            card.append(image);
 
         });
     })
