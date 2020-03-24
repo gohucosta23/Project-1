@@ -26,7 +26,13 @@ body {
     width: 400px;
     border-radius: 50px;
 }
+.recipeInfo {
+    font-size: 16px;
+    font-family: 'PT Sans Narrow', sans-serif;
+
+}
 #recipeTitle {
+    font-family: 'PT Sans Narrow', sans-serif;
     margin-top: 50px;
 }
 .carousel {
@@ -41,7 +47,7 @@ body {
    
     border: 1px black solid;
     text-align: center;
-    background-color: grey;
+    background-image: url("https://thumbs.dreamstime.com/b/high-quality-white-paper-texture-background-seamless-square-tile-ready-te-123487149.jpg");
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     overflow: visible;
