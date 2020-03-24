@@ -30,7 +30,8 @@
     }
 
     .background-container {
-        background-image: url("https://images.unsplash.com/photo-1507125524815-d9d6dccda1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+        /* background-image: url("https://images.unsplash.com/photo-1507125524815-d9d6dccda1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"); */
+        background-image: url("https://freedesignfile.com/upload/2014/05/Hand-drawn-cocktail-with-grunge-background-03.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
@@ -73,7 +74,7 @@
     }
 
     .drink-hits {
-        color: white;
+        color: black;
         font-size: 20px;
         margin-left: 30px;
 
@@ -98,7 +99,7 @@
         <nav>
             <div class="nav-wrapper indigo">
                 <div class="container ">
-                    <a class="brand-logo">Boteco Virtual</a>
+                    <a class="brand-logo">Virtual Bar</a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a href="index.html">Home</a></li>
                         <li><a href="fun.html">Recipes</a></li>
@@ -174,6 +175,15 @@
                 drinkListItem.text(cocktail);
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
+
+                var drinkKeys = Object.keys(response.drinks[i]);
+
+                for (var j = 0; j < drinkKeys.length; j++) {
+                    var drinkProperty = response.drinks[i][drinkKeys[j]];
+                    if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
+                        console.log(drinkProperty);
+                    }
+                }
                 // var drink1 = $("<p>");
                 // drink1.text("This is how you make a")
                 // drink1.addClass("drink-style");
