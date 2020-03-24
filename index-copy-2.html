@@ -13,70 +13,108 @@
     #cocktailInput {
         width: 20%;
     }
-     .cocktail-image {
-       width: 20%;
-       
+
+    .cocktail-image {
+        width: 20%;
+
     }
 
-   /* .images {
+    /* .images {
        max-width: 250px;
        min-width: 150px;
    } */
 
-   .background-container {
+    .background-container {
         background-image: url("https://images.unsplash.com/photo-1507125524815-d9d6dccda1dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
         width: 100%;
         height: 100%;
-   }
+    }
+
+    .history-list {
+        display: inline-block;
+        list-style-type: none;
+        margin-left: 10px;
+    }
+
+
+    /* .drink-history {
+       float: left;
+       margin-left: 100px;
+   } */
+
+    .container-drinks {
+        clear: both;
+    }
+
+    .search-container {
+        float: left;
+    }
+
+    .drink-container-style {
+        margin-top: 10px;
+    }
+
+    .container-drinks {
+        margin-top: 20px;
+    }
 
     
-
 </style>
 
 <body>
     <div class="background-container">
         <nav>
             <div class="nav-wrapper indigo">
-            <div class="container ">
-              <a class="brand-logo">Boteco Virtual</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="fun.html">Create your own Recipes</a></li>
-                <li><a href="collapsible.html">Create your own Cocktails</a></li>
-              </ul>
+                <div class="container ">
+                    <a class="brand-logo">Boteco Virtual</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fun.html">Create your own Recipes</a></li>
+                        <li><a href="collapsible.html">Create your own Cocktails</a></li>
+                    </ul>
+                </div>
             </div>
-            </div>
-          </nav>
-        <label for="">Pesquisa de Cóctel</label>
-        <input id="cocktailInput" onfocus="this.value=''" type="text" value="">
-        <button id="cocktailSearch">Search</button>
-        <div class="container">
+        </nav>
+        <div class="search-container">
+            <label for="">Pesquisa de Cóctel</label>
+            <input id="cocktailInput" onfocus="this.value=''" type="text" value="">
+            <button id="cocktailSearch">Search</button>
+        </div>
+
+        <ul class="drink-history">
+
+        </ul>
+        <div class="container-drinks">
+            <h5 class="recipes">Recipes</h5>
             <h6 class="drink-hits">Drink Hits</h6>
         </div>
-        <div class="carousel images">
-            <a class="carousel-item" href="#one!"></a>
-            <a class="carousel-item" href="#two!"></a>
-            <a class="carousel-item" href="#three!"></a>
-            <a class="carousel-item" href="#four!"></a>
-            <a class="carousel-item" href="#five!"></a>
-          </div>
-        <!-- <div class="images">
-            
-        </div> -->
+        <!-- <div class="carousel images">
+            <a class="carousel-item" id="one"></a>
+            <a class="carousel-item" id="two"></a>
+            <a class="carousel-item" id="three"></a>
+            <a class="carousel-item" id="four"></a>
+            <a class="carousel-item" id="five"></a>
+          </div> -->
+        <div class="images">
+
+        </div>
     </div>
 </body>
 <script>
 
-    
-        $(document).ready(function () {
-                $('.carousel').carousel();
-        
-            });
-    
+
+    $(document).ready(function () {
+        $('.carousel').carousel();
+
+    });
+
     var cocktailSearch = $("#cocktailSearch");
+    var recipes = $(".recipes");
+
+    recipes.hide(); 
 
     cocktailSearch.on("click", function () {
         var cocktailInput = $("#cocktailInput");
@@ -93,18 +131,27 @@
         }).then(function (response) {
             console.log(response);
             var arrLength = Math.min(response.drinks.length, 5);
-          
+
+            var recipes = $(".recipes");
+            
+            recipes.show();
+
             for (var i = 0; i < arrLength; i++) {
                 var drinkHits = $(".drink-hits");
                 var drink = $("<div>");
+                drink.addClass("drink-container-style")
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
-                
-                drink.text("This is how you make a " + cocktail + ": " + instructions);
+                // var drink1 = $("<p>");
+                // drink1.text("This is how you make a")
+                // drink1.addClass("drink-style");
+                // drink1.append(cocktail);
+                // drink.append("This is how you make a " + drink1 + instructions);
+                drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
                 var image = $("<img>");
-                
+
                 var choice = response.drinks[i].strDrinkThumb;
                 image.attr("src", choice);
                 image.addClass("cocktail-image");
@@ -113,6 +160,13 @@
                 card.append(image);
 
             }
+
+            var drinkHistory = $(".drink-history");
+            var li = $("<li>");
+            li.text(cocktailName);
+            li.addClass("history-list");
+            drinkHistory.append(li)
+
 
         });
     })
