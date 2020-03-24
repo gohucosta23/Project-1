@@ -1,4 +1,3 @@
-
 window.onload = function () {
 
     var apiKey = "3ecacdc43749b0d1697331f53d557613";
@@ -68,5 +67,7 @@ window.onload = function () {
         var body = $("#body");
         body.addClass("miami-background");
     })
+
+}
 
 }
