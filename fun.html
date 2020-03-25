@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.i">
     <title>Create your own Recipes</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="fun.css">
@@ -37,9 +38,13 @@
                 <div class="row">               
                 <div class="input-field col s6">
                     <input id="cuisineInput" class="input-display" placeholder="Search Recipe" type="text" >
-                    <label class="input-display">Looking for a specific recipe?</label>
-                </div>
-                </div>                
+                    <label class="input-display"><h5>Looking for a specific recipe?</h5></label>
+                 </div>                
+                </div> 
+                <div class="row">
+                    <h6>Favorite Recipes :</h6>
+                </div> 
+                <div class="row" id="favoriteRecipes"></div>              
             </div>
         </div>   
 
@@ -59,6 +64,14 @@
 
         $(document).ready(function () {
 
+            $(document).ready(function () {
+                $('.carousel').carousel();
+        
+            });
+            $(document).ready(function(){
+                $('.tabs').tabs();
+            });
+
             var images = ["https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRInSQ1nPRiuGI8RM9KBKktKQiYWZDAo2h6337alkcUC2jl8ljB",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfVOpPNbaY--0EMzBjhVma5VzBjPaqjeWhHn1uo_YHr96gpsiX",
@@ -77,17 +90,10 @@
             
 
             var recipes = [];
-            var display = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
-
-            $(document).ready(function () {
-                $('.carousel').carousel();
-        
-            });
-            $(document).ready(function(){
-                $('.tabs').tabs();
-            });
+                        
 
             for (var i = 0; i < images.length; i++){
+            
             
             var links = $(`            
             <div class="col s1">
@@ -99,30 +105,28 @@
                     </div>
                 </div>            
             `);
-
-            $(`navLinks${i}`).hover(function(){
-                $(this).css({width : "80px", heigth : "80px"})
-            }, function(){
-                $(this).css({width : "40px", heigth : "40px"})
-            });
-
             $("#cuisine-type").append(links);
-       
-        }
-        $(document).on("click", ".cuisine-links", function(){
+            };
+           
+            $(document).on("click", ".cuisine-links", function(){
             
             cuisine = $(this).attr("data-name");
-            searchCuisine(cuisine);
 
-        });
+            searchCuisine(cuisine);          
+            
+            });
+            $(document).on("click", ".addFavorite", function(){
+                console.log("clicked")
+            })
 
             $("#cuisineInput").on("keydown", function(event){
                 
                 var keypressed = event.keyCode || event.which;
                 var cuisine = $("#cuisineInput").val();
-                if (keypressed == 13) {                    
-                    searchCuisine(cuisine);                    
-                } 
+                    if (keypressed == 13) {   
+
+                        searchCuisine(cuisine);                                          
+                    } 
                 $(".carousel").empty();               
             });
 
@@ -141,16 +145,15 @@
                 
                 for (var i = 0; i < recipes.length; i++){
 
-                    var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);
-
-                   
+                    var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);                   
 
                             var displayRecipes = $(`
                             <div class="carousel-item">
                                 <h5 id="recipeTitle">${recipes[i].info.label}</h5>
                                 <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "300px" height = "300px"></a> 
-                                <p class="recipeInfo">Calories per serving : ${calories}</p>
-                                <p class="recipeInfo">Servings : ${recipes[i].info.yield}</p>                 
+                                <p class="recipeInfo"><strong>Calories per serving : ${calories}</strong></p>
+                                <p class="recipeInfo"><strong>Servings : ${recipes[i].info.yield}</strong></p>
+                                <a class="waves-effect waves-light btn addFavorite"><i class="material-icons right">add</i><strong>Add to Favorites</strong></a>
                                 </div>
                             `)
                             $('.carousel').append(displayRecipes); 
@@ -162,7 +165,7 @@
                     
                 }
 
-                }
+            }
         
             function getRecipes(cuisine) {
 
@@ -186,7 +189,7 @@
                     appendRecipes(result);
                 })
 
-            }                     
+            }                    
         })
 
     </script>
