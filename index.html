@@ -16,22 +16,20 @@
         background-size: 100%;
         
     }
-    #barSign {
-        border: 10px white dotted;
+    #sign {
+        border: 20px white dotted;
         border-radius: 5px;
         background-color: black;
         color: white;
         padding: 50px;
-        width: 400px;
+        width: 500px;
         text-align: center;
         font-family: 'Asset', cursive;
         font-size: 30px;
         margin: auto;
         margin-top: 35px;
     }
-    .blink {
-        border-color: yellow;
-    }
+    
     #buttons2, #buttons1 {
         width: 200px;
         height: 200px;
@@ -47,14 +45,16 @@
 
 </style>
 <body>
-    <div id="barSign">
+    <div id="sign">
         BOTECO VIRTUAL
     </div>
     <a class="btn-floating btn-large black pulse" id="buttons1"><p>HUNGRY</p></a>
     <a class="btn-floating right btn-large black pulse" id="buttons2"><p>THIRSTY</p></a>
 
     <script>
-        var blinkingSign;
+
+        $(document).ready(function(){
+        
 
         $("#buttons1").on("click", function(){
             window.location = "recipes.html";
@@ -62,33 +62,25 @@
 
         $("#buttons2").on("click", function(){
             window.location = "index-copy-2.html";
-        })
+        })  
+    
+var color = $("#sign").css("border-color");
+console.log(color)
+       function blink(){
+    
+            
+             if($("#sign").css("border-color") === "rgb(255, 255, 255)"){
 
-        $('#barSign').hover(
+                 $("#sign").css("border-color", "yellow");
+             }
+            else {         
 
-            function () {
-            blinkingSign = setInterval(function () {
-                $('#barSign').addClass('blink');
-            }, 1000);
-        }, function () {
-            clearInterval(blinkingSign);
-            $('#barSign').removeClass('blink');
-        });
-
-
-        // $(document).ready(function(){
-        
-        //     blinkingSign = setInterval(function(){                
-
-        //         $("#barSign").toggleClass("blink");
-                
-        //     },1000);
-        // },function (){
-
-        //     clearInterval(blinkingSign);
-        //     $("#barSign").removeClass("blink");
-        // });
-       
+                $("#sign").css("border-color", "rgb(255, 255, 255)");
+             }
+                        
+        }
+       setInterval(blink, 500);
+    });
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
