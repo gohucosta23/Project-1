@@ -85,6 +85,14 @@
         background: aquamarine;
     }
 
+    .btn {
+        margin-top: 50px;
+    }
+
+    .ingredient-list {
+        display: inline-block;
+    }
+
 
 </style>
 
@@ -113,6 +121,7 @@
         </ul>
         <div class="container-drinks">
             <h5 class="recipes">Recipes</h5>
+            
             <h6 class="drink-hits"></h6>
         </div>
         <!-- <div class="carousel images">
@@ -176,13 +185,16 @@
                     var drinkProperty = response.drinks[i][drinkKeys[j]];
                     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
                         console.log(drinkProperty);
+                        // var ingredientDiv = $("<ul>");
+                        var ingredientItem = $("<li>");
+                        ingredientItem.addClass("ingredient-list");
+                        ingredientItem.append(drinkProperty)
+                        ingredientDiv.append(ingredientItem);
+                        // ingredientDiv.text(drinkProperty);
+                        drinkHits.append(ingredientDiv);
                     }
                 }
-                // var drink1 = $("<p>");
-                // drink1.text("This is how you make a")
-                // drink1.addClass("drink-style");
-                // drink1.append(cocktail);
-                // drink.append("This is how you make a " + drink1 + instructions);
+
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -204,7 +216,7 @@
             cocktailBtn.text(cocktailName);
             li.append(cocktailBtn);
             li.addClass("history-list");
-            drinkHistory.append(li)
+            drinkHistory.append(li);
 
         });
 
