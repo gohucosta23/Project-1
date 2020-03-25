@@ -1,5 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Asset&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-image: url("https://img.freepik.com/free-vector/bar-interior-realistic-composition_1284-24320.jpg?size=626&ext=jpg");
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 100%;
+        
+    }
+    #barSign {
+        border: 10px white dotted;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        padding: 50px;
+        width: 400px;
+        text-align: center;
+        font-family: 'Asset', cursive;
+        font-size: 30px;
+        margin: auto;
+        margin-top: 35px;
+    }
+    .blink {
+        border-color: yellow;
+    }
+    #buttons2, #buttons1 {
+        width: 200px;
+        height: 200px;
+        font-size: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+       
+    }
+    p {
+        margin: auto;
+        margin-top: 75px;
+    }
+
+</style>
+<body>
+    <div id="barSign">
+        BOTECO VIRTUAL
+    </div>
+    <a class="btn-floating btn-large black pulse" id="buttons1"><p>HUNGRY</p></a>
+    <a class="btn-floating right btn-large black pulse" id="buttons2"><p>THIRSTY</p></a>
+
+    <script>
+        var blinkingSign;
+
+        $("#buttons1").on("click", function(){
+            window.location = "recipes.html";
+        })
+
+        $("#buttons2").on("click", function(){
+            window.location = "index-copy-2.html";
+        })
+
+        $('#barSign').hover(
+
+            function () {
+            blinkingSign = setInterval(function () {
+                $('#barSign').addClass('blink');
+            }, 1000);
+        }, function () {
+            clearInterval(blinkingSign);
+            $('#barSign').removeClass('blink');
+        });
+
+
+        // $(document).ready(function(){
+        
+        //     blinkingSign = setInterval(function(){                
+
+        //         $("#barSign").toggleClass("blink");
+                
+        //     },1000);
+        // },function (){
+
+        //     clearInterval(blinkingSign);
+        //     $("#barSign").removeClass("blink");
+        // });
+       
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +113,7 @@
         <div class="row">
             <div class="col-md-1">
                 <ul>
-                    <!-- add hide to list items -->
+                  
                     <li class="cities" id="ny">New York</li>
                     <li class="cities" id="chi">Chicago</li>
                     <li class="cities" id="newO">New Orleans</li>
@@ -39,7 +138,7 @@
     <div class="row">
         <div class="col s12">
 
-            <!-- add hide to list items -->
+            
 
             <h5 class="cities waves-effect waves-light btn-larg" id="ny">New York</h5>
 
@@ -65,4 +164,4 @@
 </body>
 
 
-</html>
+</html> -->
