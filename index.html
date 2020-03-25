@@ -68,10 +68,10 @@
 
             function () {
             blinkingSign = setInterval(function () {
-                $('#barSign').toggleClass('blink');
+                $('#barSign').addClass('blink');
             }, 1000);
         }, function () {
-            clearInterval(flashInterval);
+            clearInterval(blinkingSign);
             $('#barSign').removeClass('blink');
         });
 
