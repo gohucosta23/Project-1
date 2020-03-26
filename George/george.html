@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Normalize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google fonts and icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- styleG sheet -->
+    <link rel="stylesheet" href="styleG.css">
+    <!-- J Query -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Materialize js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Script File -->
+    <title>Boteco Virtual</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="images/favicon.png.ico" />
+
+</head>
+
+<body>
+    <div class="background-container">
+        <nav>
+            <div class="nav-wrapper indigo">
+                <div class="container ">
+                    <a class="brand-logo">Virtual Bar</a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="fun.html">Recipes</a></li>
+                        <li><a href="collapsible.html">Cocktails</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <label class="search-label" for="">Cocktail Search</label>
+            <input id="cocktailInput" onfocus="this.value=''" type="text" value="">
+            <button id="cocktailSearch" class="waves-effect waves-light btn-small">Search</button>
+            <button id="add-fav-click" class="waves-effect waves-light btn-small">+ ADD TO FAVORITES</button><br>
+
+        </div>
+        <div class="container row">
+            <button id="1" class="hide"></button><button id="2" class="hide"></button><button id="3"
+                class="hide"></button><button id="4" class="hide"></button><button id="5" class="hide"></button>
+        </div>
+        <div class="container row">
+            <button id="6" class="hide"></button><button id="7" class="hide"></button><button id="8"
+                class="hide"></button><button id="9" class="hide"></button><button id="10" class="hide"></button>
+        </div>
+
+        <ul class="drink-history">
+
+        </ul>
+        <div class="container-drinks">
+            <h5 class="recipes">Drink Options</h5>
+
+            <h6 class="drink-hits"></h6>
+        </div>
+        <!-- <div class="carousel images">
+            <a class="carousel-item" id="one"></a>
+            <a class="carousel-item" id="two"></a>
+            <a class="carousel-item" id="three"></a>
+            <a class="carousel-item" id="four"></a>
+            <a class="carousel-item" id="five"></a>
+          </div> -->
+        <div class="images">
+
+        </div>
+    </div>
+</body>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="scriptG.js"></script>
+
+</html>
