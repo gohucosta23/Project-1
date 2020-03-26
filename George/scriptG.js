@@ -124,7 +124,9 @@
         // drinkHistory.append(li);
         myFavorites.push(cocktailName);
         prompt(myFavorites)
-        $("#1").text("cocktailName");
+        var button1= $('#1')
+        button1.removeClass("hide");
+        button1.text(myFavorites);
 
     
         
