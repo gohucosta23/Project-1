@@ -1,9 +1,4 @@
-
-    // $(window).on('load', function () {
-    //     localStorage.getItem("cocktailBtn", cocktailBtn);
-    // })
-
-    $(document).ready(function () {
+$(document).ready(function () {
         $('.carousel').carousel();
 
     });
@@ -108,36 +103,23 @@
 
     var favClick = $("#add-fav-click");
     favClick.on("click", function () {
-
-        let myFavorites = [];
-
-        // var cocktailInput = $("#cocktailInput");
+        var cocktailInput = $("#cocktailInput");
         var cocktailName = cocktailInput.val();
-        // var drinkHistory = $(".drink-history");
-        // var li = $("<li>");
-        // var cocktailBtn = $("<button>");
-        // cocktailBtn.addClass("fav-btn btn btn-primary");
-        // cocktailBtn.attr("value", cocktailName);
-        // $(#).text(cocktailName);
-        // li.append(cocktailBtn);
-        // li.addClass("history-list");
-        // drinkHistory.append(li);
-        myFavorites.push(cocktailName);
-        prompt(myFavorites)
-        var button1= $('#1')
-        button1.removeClass("hide");
-        button1.text(myFavorites);
+        var drinkHistory = $(".drink-history");
+        var li = $("<li>");
+        var cocktailBtn = $("<button>");
+        cocktailBtn.addClass("fav-btn btn btn-primary");
+        cocktailBtn.attr("value", cocktailName);
+        cocktailBtn.text(cocktailName);
+        li.append(cocktailBtn);
+        li.addClass("history-list");
+        drinkHistory.append(li);
 
-    
-        
+        localStorage.setItem("myCocktail", cocktailName);
+        localStorage.setItem("cocktailBtn", cocktailBtn);
+        console.log(localStorage);
+        console.log(cocktailBtn);
 
-// for (var i=0;i<myFavorites.length;i++){
-//     $("#"+i).text(cocktailName);
-//         localStorage.setItem("myCocktail"+i, cocktailName);
-//         localStorage.setItem("cocktailBtn"+i, cocktailBtn);
-//         console.log(localStorage);
-//         console.log(cocktailBtn);
-//     }
     });
 
     $(document).on("click", ".fav-btn", function () {
@@ -169,21 +151,26 @@
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
 
-                // var drinkKeys = Object.keys(response.drinks[i]);
+                var drinkKeys = Object.keys(response.drinks[i]);
                 // lines 183-194 until able to fix - these lines print ingredients to page
-                // for (var j = 0; j < drinkKeys.length; j++) {
-                //     var drinkProperty = response.drinks[i][drinkKeys[j]];
-                //     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                //         console.log(drinkProperty);
-                //         var ingredientDiv = $("<ul>");
-                //         var ingredientItem = $("<li>");
-                //         ingredientItem.addClass("ingredient-list");
-                //         ingredientItem.append(drinkProperty)
-                //         ingredientDiv.append(ingredientItem);
-                //         ingredientDiv.text(drinkProperty);
-                //         drinkHits.append(ingredientDiv);
-                //     }
-                // }
+                
+                var ingredientList = $("<ol>");
+                var drinkIngredients = "Ingredients are: ";
+                
+
+                for (var j = 0; j < drinkKeys.length; j++) {
+                    var drinkProperty = response.drinks[i][drinkKeys[j]];
+                    if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
+                        console.log(drinkProperty);
+                        var ingredientItem = $("<li>");
+                        ingredientItem.addClass("ingredient-list");
+                        // ingredientList.text(drinkIngredients);
+                        ingredientItem.append(drinkProperty);
+                        ingredientList.append(ingredientItem);
+                        // ingredientList.text(drinkProperty);
+                        drinkHits.append(ingredientList);
+                    }
+                }
 
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
@@ -245,3 +232,4 @@
 
 
     });
+
