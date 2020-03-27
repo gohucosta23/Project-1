@@ -80,3 +80,7 @@
 .ingredient-list {
     display: inline-block;
 }
+
+.cocktail-style {
+    color: red;
+}
