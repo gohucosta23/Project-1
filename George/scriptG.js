@@ -1,24 +1,25 @@
 
-    // $(window).on('load', function () {
-    //     localStorage.getItem("cocktailBtn", cocktailBtn);
-    // })
-
-    $(document).ready(function () {
-        $('.carousel').carousel();
-
-    });
+    
+    $(document).ready(function(){
 
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
     var drinkHits = $(".drink-hits");
+    var myFavorites = JSON.parse(localStorage.getItem("FavoriteDrinks")) || [];
+    
+    if(myFavorites.length > 0){
 
-    recipes.hide();
+        drinkSearch(myFavorites[myFavorites.length - 1])
+        }
+   
+    
 
     function drinkSearch(cocktailName) {
         var cocktailInput = $("#cocktailInput");
         cocktailName = cocktailInput.val();
         console.log(cocktailName);
         var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName;
+        
 
         $(".drink-hits").empty();
         $(".images").empty();
@@ -44,22 +45,7 @@
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
 
-                // var drinkKeys = Object.keys(response.drinks[i]);
-                // lines 183-194 until able to fix - these lines print ingredients to page
-                // for (var j = 0; j < drinkKeys.length; j++) {
-                //     var drinkProperty = response.drinks[i][drinkKeys[j]];
-                //     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                //         console.log(drinkProperty);
-                //         var ingredientDiv = $("<ul>");
-                //         var ingredientItem = $("<li>");
-                //         ingredientItem.addClass("ingredient-list");
-                //         ingredientItem.append(drinkProperty)
-                //         ingredientDiv.append(ingredientItem);
-                //         ingredientDiv.text(drinkProperty);
-                //         drinkHits.append(ingredientDiv);
-                //     }
-                // }
-
+                
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -109,36 +95,28 @@
     var favClick = $("#add-fav-click");
     favClick.on("click", function () {
 
-        let myFavorites = [];
-
-        // var cocktailInput = $("#cocktailInput");
-        var cocktailName = cocktailInput.val();
-        // var drinkHistory = $(".drink-history");
-        // var li = $("<li>");
-        // var cocktailBtn = $("<button>");
-        // cocktailBtn.addClass("fav-btn btn btn-primary");
-        // cocktailBtn.attr("value", cocktailName);
-        // $(#).text(cocktailName);
-        // li.append(cocktailBtn);
-        // li.addClass("history-list");
-        // drinkHistory.append(li);
+       
+        var cocktailInput = $("#cocktailInput");
+        var cocktailName = cocktailInput.val(); 
+        
         myFavorites.push(cocktailName);
         prompt(myFavorites)
         var button1= $('#1')
         button1.removeClass("hide");
         button1.text(myFavorites);
 
-    
+    function renderFavs(){
+        $("#buttonDisplay").empty();
+        for (var i=0; i < myFavorites.length; i++){
         
+           var buttons = $("<button>");
+           buttons.attr("data-name", myFavorites[i]);
+           buttons.text(myFavorites[i]); 
+           $("#buttonDisplay").append(buttons);
+          
 
-// for (var i=0;i<myFavorites.length;i++){
-//     $("#"+i).text(cocktailName);
-//         localStorage.setItem("myCocktail"+i, cocktailName);
-//         localStorage.setItem("cocktailBtn"+i, cocktailBtn);
-//         console.log(localStorage);
-//         console.log(cocktailBtn);
-//     }
-    });
+          }
+        }
 
     $(document).on("click", ".fav-btn", function () {
         var cocktailValue = $(this).attr("value");
@@ -168,23 +146,6 @@
                 drinkListItem.text(cocktail);
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
-
-                // var drinkKeys = Object.keys(response.drinks[i]);
-                // lines 183-194 until able to fix - these lines print ingredients to page
-                // for (var j = 0; j < drinkKeys.length; j++) {
-                //     var drinkProperty = response.drinks[i][drinkKeys[j]];
-                //     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                //         console.log(drinkProperty);
-                //         var ingredientDiv = $("<ul>");
-                //         var ingredientItem = $("<li>");
-                //         ingredientItem.addClass("ingredient-list");
-                //         ingredientItem.append(drinkProperty)
-                //         ingredientDiv.append(ingredientItem);
-                //         ingredientDiv.text(drinkProperty);
-                //         drinkHits.append(ingredientDiv);
-                //     }
-                // }
-
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -245,3 +206,5 @@
 
 
     });
+    renderFavs();
+});
