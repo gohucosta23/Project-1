@@ -11,6 +11,8 @@
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
     var drinkHits = $(".drink-hits");
+    var myFavorites = JSON.parse(localStorage.getItem('FavoriteDrinks') || []);
+    console.log(myFavorites);
 
     recipes.hide();
 
