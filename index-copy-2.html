@@ -298,21 +298,26 @@
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
 
-                // var drinkKeys = Object.keys(response.drinks[i]);
+                var drinkKeys = Object.keys(response.drinks[i]);
                 // lines 183-194 until able to fix - these lines print ingredients to page
-                // for (var j = 0; j < drinkKeys.length; j++) {
-                //     var drinkProperty = response.drinks[i][drinkKeys[j]];
-                //     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                //         console.log(drinkProperty);
-                //         var ingredientDiv = $("<ul>");
-                //         var ingredientItem = $("<li>");
-                //         ingredientItem.addClass("ingredient-list");
-                //         ingredientItem.append(drinkProperty)
-                //         ingredientDiv.append(ingredientItem);
-                //         ingredientDiv.text(drinkProperty);
-                //         drinkHits.append(ingredientDiv);
-                //     }
-                // }
+                
+                var ingredientList = $("<ol>");
+                var drinkIngredients = "Ingredients are: ";
+                
+
+                for (var j = 0; j < drinkKeys.length; j++) {
+                    var drinkProperty = response.drinks[i][drinkKeys[j]];
+                    if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
+                        console.log(drinkProperty);
+                        var ingredientItem = $("<li>");
+                        ingredientItem.addClass("ingredient-list");
+                        // ingredientList.text(drinkIngredients);
+                        ingredientItem.append(drinkProperty);
+                        ingredientList.append(ingredientItem);
+                        // ingredientList.text(drinkProperty);
+                        drinkHits.append(ingredientList);
+                    }
+                }
 
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);

@@ -21,6 +21,9 @@ $(document).ready(function () {
     
     var recipes = [];
    
+    // Checking to see if there is anything in Local Storage and running getRecipes with 
+    // last Item in the local storage array.
+
     if(favoriteRecipeStorage.length > 0){
 
         getRecipes(favoriteRecipeStorage[favoriteRecipeStorage.length - 1])
@@ -65,18 +68,18 @@ $(document).ready(function () {
 
         var favoriteValue = $(this).siblings("#recipeTitle").text();
 
-        for (var i = 0; i < favoriteRecipeStorage.length; i++){
-            if (favoriteRecipeStorage[i] === favoriteValue){
-                favoriteRecipeStorage.splice(i,1);
-            }
-        }   
-        
-            favoriteRecipeStorage.push(favoriteValue);
+            for (var i = 0; i < favoriteRecipeStorage.length; i++){
+                if (favoriteRecipeStorage[i] === favoriteValue){
+                    favoriteRecipeStorage.splice(i,1);
+                }
+            }   
             
-                if(favoriteRecipeStorage.length > favoritesLimit){
+                favoriteRecipeStorage.push(favoriteValue);
+                
+                    if(favoriteRecipeStorage.length > favoritesLimit){
 
-                    favoriteRecipeStorage.shift();                
-        }          
+                        favoriteRecipeStorage.shift();                
+            }          
 
         localStorage.setItem("Favorite Recipes", JSON.stringify(favoriteRecipeStorage));
         renderFavorites(favoriteValue);
@@ -109,7 +112,8 @@ $(document).ready(function () {
         $(".carousel").empty();
                
     });
-   
+    
+    // <--- Functions start here --->
 
     // Function to render favorite recipes buttons
 
@@ -117,44 +121,45 @@ $(document).ready(function () {
 
         $("#favoriteRecipes").empty();
 
-        for (var i = 0; i < favoriteRecipeStorage.length; i++){
+            for (var i = 0; i < favoriteRecipeStorage.length; i++){
 
-            var favoriteButton = $(`<a class="waves-effect waves-light btn indigo favoriteButtons"></a>`);
-                favoriteButton.attr("data-name", favoriteRecipeStorage[i]);
-                $("#favoriteRecipes").prepend(favoriteButton);
-                favoriteButton.text(favoriteRecipeStorage[i]);
-               
-        }
+                var favoriteButton = $(`<a class="waves-effect waves-light btn indigo favoriteButtons"></a>`);
+                    favoriteButton.attr("data-name", favoriteRecipeStorage[i]);
+                    $("#favoriteRecipes").prepend(favoriteButton);
+                    favoriteButton.text(favoriteRecipeStorage[i]);
+                
+            }
     }  
     
 
     // This function is looping through the results and creating content to be appended to carousel.
 
     function appendRecipes(recipes) {
+
         $(".carousel").empty();
         $("#cuisineInput").val("");
-        for (var i = 0; i < recipes.length; i++){
+            for (var i = 0; i < recipes.length; i++){
 
-            var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);                 
-           
-                    var displayRecipes = $(`
-                        <div class="carousel-item">
-                            <h5 id="recipeTitle">${recipes[i].info.label}</h5>
-                            <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "350px" height = "300px"></a> 
-                            <p class="recipeInfo" style = "font-weight : bolder;">Calories per serving : ${calories}</p>
-                            <p class="recipeInfo" style = "font-weight : bolder;">Servings : ${recipes[i].info.yield}</p>
-                            <a class="waves-effect waves-light btn addFavorite "><strong>Add to Favorites +</strong></a>
-                            </div>
-                        `)
-                    $('.carousel').append(displayRecipes); 
-                    displayRecipes.attr("id", "carouselItem"+[i]);
-                    $("#carouselItem"+[i]).css({width: "500px", height: "550px"});
-                   
-
-                    $('.carousel').carousel(); 
-                            
+                var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);                 
             
-        }
+                        var displayRecipes = $(`
+                            <div class="carousel-item">
+                                <h5 id="recipeTitle">${recipes[i].info.label}</h5>
+                                <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "350px" height = "300px"></a> 
+                                <p class="recipeInfo" style = "font-weight : bolder;">Calories per serving : ${calories}</p>
+                                <p class="recipeInfo" style = "font-weight : bolder;">Servings : ${recipes[i].info.yield}</p>
+                                <a class="waves-effect waves-light btn addFavorite "><strong>Add to Favorites +</strong></a>
+                                </div>
+                            `)
+                        $('.carousel').append(displayRecipes); 
+                        displayRecipes.attr("id", "carouselItem"+[i]);
+                        $("#carouselItem"+[i]).css({width: "500px", height: "550px"});
+                    
+
+                        $('.carousel').carousel(); 
+                                
+                
+            }
 
     }
     // This function does the ajax call to get the recipes.
@@ -182,5 +187,6 @@ $(document).ready(function () {
             });
 
         }
+        
         renderFavorites();                    
 });

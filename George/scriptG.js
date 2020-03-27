@@ -100,13 +100,10 @@
         var cocktailName = cocktailInput.val(); 
         
         myFavorites.push(cocktailName);
-        localStorage.setItem("FavoriteDrinks", JSON.stringify(myFavorites));
-        if (myFavorites.length > 5){
-            myFavorites.shift();
-           }
-        renderFavs();
-      
-    });
+        prompt(myFavorites)
+        var button1= $('#1')
+        button1.removeClass("hide");
+        button1.text(myFavorites);
 
     function renderFavs(){
         $("#buttonDisplay").empty();
