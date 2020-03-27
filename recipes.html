@@ -3,18 +3,35 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <title>Create your own Recipes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="recipes.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
 
 <body>
+
+    <!-- Adding play and pause buttons for background music-->
+    <audio controls loop id="audioClip">
+
+        <!--<button type="button" onclick="playAud()">Play Music</button>
+        <button type="button" onclick="pauseAud()">Pause Music</button> -->
+
+        <!-- <source id="musicSource" src="Audio/South American.mp3" type="audio/mpeg"> -->
+        <source id="musicSource" src="./Audio/${cuisine}.mp3" type="audio/mpeg">
+        Your browser does not support HTML5 audio.
+
+    </audio>
+
+
+
+
+
     <nav>
         <div class="nav-wrapper indigo">
             <div class="container ">
@@ -23,47 +40,63 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="recipes.html">Recipes</a></li>
                     <li><a href="index-copy-2.html">Cocktails</a></li>
-                </ul>   
+                </ul>
             </div>
         </div>
-      </nav>
-        <div>
-            <div class="row" id="cuisine-type">
-                <div class="col s1">                    
-                </div>
+    </nav>
+    <div>
+        <div class="row" id="cuisine-type">
+            <div class="col s1">
             </div>
         </div>
-        <div class="row">
-            <div class="col s6">
-                <div class="container recipe-input">
-                <div class="row">               
-                <div class="input-field col s6">
-                    <input id="cuisineInput" class="input-display" placeholder="Search Recipe" type="text" >
-                    <label class="input-display"><h5 style="color : black;"><strong>Looking for a specific recipe?</strong></h5></label>
-                 </div>                
-                </div> 
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="container recipe-input">
                 <div class="row">
-                    <h6>Favorite Recipes :</h6>
-                </div> 
-                <div class="row" id="favoriteRecipes"></div>              
-            </div>
-        </div>   
-
-            <div class="col s6">
-                <div class="container recipe-display"> 
-                    <div class="carousel container right">
-                        
+                    <div class="input-field col s6">
+                        <input id="cuisineInput" class="input-display" placeholder="Search Recipe" type="text">
+                        <label class="input-display">
+                            <h5 style="color : black;"><strong>Looking for a specific recipe?</strong></h5>
+                        </label>
                     </div>
                 </div>
+                <div class="row">
+                    <h6>Favorite Recipes :</h6>
+                </div>
+                <div class="row" id="favoriteRecipes"></div>
             </div>
-        </div>        
+        </div>
+
+        <div class="col s6">
+            <div class="container recipe-display">
+                <div class="carousel container right">
+
+                </div>
+            </div>
         </div>
     </div>
     </div>
-    
+    </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="recipes.js"></script>
-    
+    <script src="recipes.js">
+
+        var aud = document.getElementById("audioClip");
+
+        function playAud() {
+            //var aud = document.getElementById("audioClip");
+            aud.play();
+        };
+
+        function pauseAud() {
+            //var aud = document.getElementById("audioClip");
+            aud.pause();
+        };
+    </script>
+
+
 
 
 </body>
