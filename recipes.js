@@ -9,18 +9,21 @@ $(document).ready(function () {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQT302oOUQHfApUHnL_t6qFriZ0817JxikRzvY2KqT5f6ozid18",
     "https://www.sheknows.com/wp-content/uploads/2018/08/ti8wzfbbvdspxo8dg1ci.jpeg",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRRLzcnZXcCOp06zZ8giV0FmIge2_T4iai_ySPlgGxnAQ6yjSdX", 
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPGlJvv0HhZgKbiB9G4T6f--Wkwkuk4Ncz9hXGt7d258K8PGc6"];
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPGlJvv0HhZgKbiB9G4T6f--Wkwkuk4Ncz9hXGt7d258K8PGc6",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR0ATKuY6dSIeot4w3sjr1APgaLYsX_yNQwmogfIKLqa1IVFMC0"];
 
-    var names = ["American", "Asian", "South American", "Japanese", "Vegetarian", "Chinese", "Indian", "Mediterranean", "British" ];
+    var names = ["American", "Asian", "South American", "Japanese", "Vegetarian", "Chinese", "Indian", "Mediterranean", "British", "Italian"];
     var apiKey = "3ecacdc43749b0d1697331f53d557613";
     var appId = "b81fa997";
-    var cuisine = $("#cuisineInput").val();
-    var recipe = $("#recipeInput").val();
+    var cuisine = $("#cuisineInput").val();    
     var favoritesLimit = 6;            
     var favoriteRecipeStorage = JSON.parse(localStorage.getItem("Favorite Recipes")) || [];
     
     var recipes = [];
    
+    // Checking to see if there is anything in Local Storage and running getRecipes with 
+    // last Item in the local storage array.
+
     if(favoriteRecipeStorage.length > 0){
 
         getRecipes(favoriteRecipeStorage[favoriteRecipeStorage.length - 1])
@@ -64,15 +67,24 @@ $(document).ready(function () {
     $(document).on("click", ".addFavorite", function(){                
 
         var favoriteValue = $(this).siblings("#recipeTitle").text();
-        favoriteRecipeStorage.push(favoriteValue);
-            if(favoriteRecipeStorage.length > favoritesLimit){
 
-                favoriteRecipeStorage.shift();
-                console.log(favoriteRecipeStorage.length)
-        }
+            for (var i = 0; i < favoriteRecipeStorage.length; i++){
+                if (favoriteRecipeStorage[i] === favoriteValue){
+                    favoriteRecipeStorage.splice(i,1);
+                }
+            }   
+            
+                favoriteRecipeStorage.push(favoriteValue);
+                
+                    if(favoriteRecipeStorage.length > favoritesLimit){
+
+                        favoriteRecipeStorage.shift();                
+            }          
 
         localStorage.setItem("Favorite Recipes", JSON.stringify(favoriteRecipeStorage));
-        
+        renderFavorites(favoriteValue);
+    
+
         
     })
 
@@ -80,7 +92,7 @@ $(document).ready(function () {
 
     $(document).on("click", ".favoriteButtons", function(cuisine){
 
-        var searchFavorites = $(this).text();
+        var searchFavorites = $(this).text().trim();
         cuisine = searchFavorites;
         getRecipes(cuisine);
         $(".carousel").empty();
@@ -100,59 +112,54 @@ $(document).ready(function () {
         $(".carousel").empty();
                
     });
-   
+    
+    // <--- Functions start here --->
 
     // Function to render favorite recipes buttons
 
-    function renderFavorites(){
+    function renderFavorites(favoriteValue){
 
         $("#favoriteRecipes").empty();
 
-        for (var i = 0; i < favoriteRecipeStorage.length; i++){
+            for (var i = 0; i < favoriteRecipeStorage.length; i++){
 
-            var favoriteButton = $(`<a class="waves-effect waves-light btn indigo favoriteButtons"></a>`);
-                favoriteButton.attr("data-name", favoriteRecipeStorage[i]);
-                $("#favoriteRecipes").prepend(favoriteButton);
-                favoriteButton.text(favoriteRecipeStorage[i]);                        
-
-        }
-    }
-
-   
-    // function searchCuisine(cuisine){
-        
-    //     queryURL = `https://api.edamam.com/search?q=${cuisine}&app_id=${appId}&app_key=${apiKey}&from=0&to=30`;
-
-    //         getRecipes(cuisine);
-    //         $(".carousel").empty();
-    // };
+                var favoriteButton = $(`<a class="waves-effect waves-light btn indigo favoriteButtons"></a>`);
+                    favoriteButton.attr("data-name", favoriteRecipeStorage[i]);
+                    $("#favoriteRecipes").prepend(favoriteButton);
+                    favoriteButton.text(favoriteRecipeStorage[i]);
+                
+            }
+    }  
+    
 
     // This function is looping through the results and creating content to be appended to carousel.
 
     function appendRecipes(recipes) {
+
         $(".carousel").empty();
-        for (var i = 0; i < recipes.length; i++){
+        $("#cuisineInput").val("");
+            for (var i = 0; i < recipes.length; i++){
 
-            var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);                 
-           
-                    var displayRecipes = $(`
-                        <div class="carousel-item">
-                            <h5 id="recipeTitle">${recipes[i].info.label}</h5>
-                            <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "350px" height = "300px"></a> 
-                            <p class="recipeInfo" style = "font-weight : bolder;">Calories per serving : ${calories}</p>
-                            <p class="recipeInfo" style = "font-weight : bolder;">Servings : ${recipes[i].info.yield}</p>
-                            <a class="waves-effect waves-light btn addFavorite " <i class="material-icons right">add</i><strong>Add to Favorites</strong></a>
-                            </div>
-                        `)
-                    $('.carousel').append(displayRecipes); 
-                    displayRecipes.attr("id", "carouselItem"+[i]);
-                    $("#carouselItem"+[i]).css({width: "500px", height: "550px"});
-                   
-
-                    $('.carousel').carousel(); 
-                            
+                var calories = Math.floor(recipes[i].info.calories / recipes[i].info.yield);                 
             
-        }
+                        var displayRecipes = $(`
+                            <div class="carousel-item">
+                                <h5 id="recipeTitle">${recipes[i].info.label}</h5>
+                                <a href ='${recipes[i].info.url}'><img src =${recipes[i].info.image} width = "350px" height = "300px"></a> 
+                                <p class="recipeInfo" style = "font-weight : bolder;">Calories per serving : ${calories}</p>
+                                <p class="recipeInfo" style = "font-weight : bolder;">Servings : ${recipes[i].info.yield}</p>
+                                <a class="waves-effect waves-light btn addFavorite "><strong>Add to Favorites +</strong></a>
+                                </div>
+                            `)
+                        $('.carousel').append(displayRecipes); 
+                        displayRecipes.attr("id", "carouselItem"+[i]);
+                        $("#carouselItem"+[i]).css({width: "500px", height: "550px"});
+                    
+
+                        $('.carousel').carousel(); 
+                                
+                
+            }
 
     }
     // This function does the ajax call to get the recipes.
@@ -168,7 +175,7 @@ $(document).ready(function () {
 
             }).then(function (response) {
             
-                console.log(queryURL)
+                
                 var result = [];
                 for (var i = 0; i < response.hits.length; i++) {
                     var tempObj = { type: response.q, info: response.hits[i].recipe };
@@ -180,5 +187,6 @@ $(document).ready(function () {
             });
 
         }
+        
         renderFavorites();                    
 });

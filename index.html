@@ -54,18 +54,24 @@
     <script>
 
         $(document).ready(function(){
-        
 
-        $("#buttons1").on("click", function(){
+        var recipeBtn = $("#buttons1");
+        var drinkBtn = $("#buttons2");
+
+        recipeBtn.on("click", function(){
             window.location = "recipes.html";
         })
 
-        $("#buttons2").on("click", function(){
+        drinkBtn.on("click", function(){
             window.location = "index-copy-2.html";
         })  
-    
-var color = $("#sign").css("border-color");
-console.log(color)
+        recipeBtn.hover(function(){
+            var text = $(this).text();
+            $(this).text("hello");
+        }, function(){
+            $(this).text(text);
+        });
+
        function blink(){
     
             
