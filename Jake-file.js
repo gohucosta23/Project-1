@@ -37,40 +37,33 @@ function drinkSearch(cocktailName) {
             var drinkListItem = $("<p>");
             drinkListItem.text(cocktail);
             var cocktail = response.drinks[i].strDrink;
+            // var cocktailSpan = $("<span>");
+            // cocktailSpan.append(cocktail);
+            // cocktailSpan.addClass("cocktail-style");
+            // drink.append(cocktailSpan);
             var instructions = response.drinks[i].strInstructions;
             // var drinkProperty = response.drinks[i][drinkKeys[j]];
 
             var drinkKeys = Object.keys(response.drinks[i]);
-            // lines 183-194 until able to fix - these lines print ingredients to page
-            
-            var ingredientNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-            var k = 0;
-            var numOfIngredients = ingredientNum[k];
-
-            
-            // lines 183-194 until able to fix - these lines print ingredients to page
-            
+            drink.text(cocktail + ": " + instructions);
+            drinkHits.append(drink);
             var ingredientList = $("<ul>");
             var drinkIngredients = "Ingredients are: ";
-            
+            ingredientList.append(drinkIngredients);
 
             for (var j = 0; j < drinkKeys.length; j++) {
                 var drinkProperty = response.drinks[i][drinkKeys[j]];
                 if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                    console.log(numOfIngredients + drinkProperty);
-                   
-                   
+
+                    var ingredientNumber = drinkKeys[j].split("strIngredient")[1];
                     var ingredientItem = $("<li>");
                     ingredientItem.addClass("ingredient-list");
-                    ingredientItem.append(numOfIngredients + ". " + drinkProperty);
+                    ingredientItem.append(ingredientNumber + ". " + drinkProperty + "&nbsp;");
                     ingredientList.append(ingredientItem);
                     drinkHits.append(ingredientList);
                 }
             }
 
-
-            drink.text(cocktail + ": " + instructions);
-            drinkHits.append(drink);
             var card = $(".images");
             var image = $("<img>");
 
@@ -110,17 +103,26 @@ function drinkSearch(cocktailName) {
 
 };
 
+// var favCocktails = localStorage.getItem("favCocktails") || [];
+
+// for (var x = 0; x < favCocktails.length; x++) {
+//     cocktailSave();
+// }
+
 cocktailSearch.on("click", function () {
     drinkSearch();
 });
 
 var favClick = $("#add-fav-click");
 favClick.on("click", function () {
+
+
     var cocktailInput = $("#cocktailInput");
     var cocktailName = cocktailInput.val();
     var drinkHistory = $(".drink-history");
     var li = $("<li>");
     var cocktailBtn = $("<button>");
+
     cocktailBtn.addClass("fav-btn btn btn-primary");
     cocktailBtn.attr("value", cocktailName);
     cocktailBtn.text(cocktailName);
@@ -128,7 +130,28 @@ favClick.on("click", function () {
     li.addClass("history-list");
     drinkHistory.append(li);
 
+    localStorage.setItem("favCocktails", cocktailName);
+
 });
+
+localStorage.getItem("favCocktails");
+
+function cocktailSave() {
+    var cocktailInput = $("#cocktailInput");
+    var cocktailName = cocktailInput.val();
+    var drinkHistory = $(".drink-history");
+    var li = $("<li>");
+    var cocktailBtn = $("<button>");
+
+    cocktailBtn.addClass("fav-btn btn btn-primary");
+    cocktailBtn.attr("value", cocktailName);
+    cocktailBtn.text(cocktailName);
+    li.append(cocktailBtn);
+    li.addClass("history-list");
+    drinkHistory.append(li);
+};
+
+
 
 $(document).on("click", ".fav-btn", function () {
     var cocktailValue = $(this).attr("value");
@@ -160,32 +183,27 @@ $(document).on("click", ".fav-btn", function () {
             var instructions = response.drinks[i].strInstructions;
 
             var drinkKeys = Object.keys(response.drinks[i]);
-            var ingredientNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-            var k = 0;
-            var numOfIngredients = ingredientNum[k];
-            
-            // lines 183-194 until able to fix - these lines print ingredients to page
-            
+
+
+            drink.text(cocktail + ": " + instructions);
+            drinkHits.append(drink);
             var ingredientList = $("<ul>");
             var drinkIngredients = "Ingredients are: ";
-            
+            ingredientList.append(drinkIngredients);
 
             for (var j = 0; j < drinkKeys.length; j++) {
                 var drinkProperty = response.drinks[i][drinkKeys[j]];
                 if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                    console.log(numOfIngredients + drinkProperty);
-                   
-                   
+                    
+                    var ingredientNumber = drinkKeys[j].split("strIngredient")[1];
                     var ingredientItem = $("<li>");
                     ingredientItem.addClass("ingredient-list");
-                    ingredientItem.append(numOfIngredients + ". " + drinkProperty);
+                    ingredientItem.append(ingredientNumber + ". " + drinkProperty + "&nbsp;");
                     ingredientList.append(ingredientItem);
                     drinkHits.append(ingredientList);
                 }
             }
 
-            drink.text(cocktail + " - " + instructions);
-            drinkHits.append(drink);
             var card = $(".images");
             var image = $("<img>");
 
@@ -193,7 +211,6 @@ $(document).on("click", ".fav-btn", function () {
             image.attr("src", choice);
             image.addClass("cocktail-image");
             var carouselItem = $(".carousel-item");
-            // originally appended to card
             card.append(image);
 
         }
@@ -229,7 +246,6 @@ $(document).on("click", ".fav-btn", function () {
 
 
 
-// trying to make list item button create a confirm
 
 var cocktailInput = $("#cocktailInput");
 var cocktailName = cocktailInput.val();
