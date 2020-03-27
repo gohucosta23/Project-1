@@ -244,5 +244,3 @@ cocktailBtn.on("click", function () {
 
 
 });
-
-
