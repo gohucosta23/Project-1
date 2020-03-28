@@ -59,12 +59,17 @@ $(document).ready(function () {
     
         cuisine = $(this).attr("data-name");
         console.log(cuisine);
+
         getRecipes(cuisine); 
     //Adding background music to cuisines
     $("#musicSource").attr("src", `./Audio/${cuisine}.mp3`);
         console.log("working");
+
         $("#audioClip").get(0).load();
         $("#audioClip").get(0).play();                
+        $("#audioClip").get(0).play();
+   
+         
     
     });
 

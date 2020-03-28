@@ -1,46 +1,32 @@
 $(document).ready(function(){
+    $('.slider').slider();
+  });
+    
+        $(document).ready(function () {
+            var recipeBtn = $("#buttons1");
+            var drinkBtn = $("#buttons2");
 
-    var recipeBtn = $("#buttons1");
-    var drinkBtn = $("#buttons2");
+            recipeBtn.on("click", function () {
+                window.location = "recipes.html";
+            })
 
-    recipeBtn.on("click", function(){
-        window.location = "recipes.html";
-    })
+            drinkBtn.on("click", function () {
+                window.location = "index-copy-2.html";
+            })
+            
 
-    drinkBtn.on("click", function(){
-        window.location = "Jake-file.html";
-    })        
-     
-    recipeBtn.mouseenter(function(){
-       
-        $(this).children("div").text("Click here for recipes").attr("class", "text1");
+            function blink() {
 
-    }).mouseleave(function(){
 
-        $(this).children("div").text("HUNGRY?").attr("class", "text2");
-    })
+                if ($("#sign").css("border-color") === "rgb(255, 255, 255)") {
 
-    drinkBtn.mouseenter(function(){
-        
-        $(this).children("div").text("Click here for Drinks").attr("class", "text1"); 
+                    $("#sign").css("border-color", "yellow");
+                }
+                else {
 
-    }).mouseleave(function(){
-        
-        $(this).children("div").text("THIRSTY?").attr("class", "text2");
-    })
+                    $("#sign").css("border-color", "rgb(255, 255, 255)");
+                }
 
-   function flash(){
-
-        
-         if($("#sign").css("border-color") === "rgb(255, 255, 255)"){
-
-             $("#sign").css("border-color", "yellow");
-         }
-        else {         
-
-            $("#sign").css("border-color", "rgb(255, 255, 255)");
-         }
-                    
-    }
-   setInterval(flash, 500);
-});
+            }
+            setInterval(blink, 500);
+        });
