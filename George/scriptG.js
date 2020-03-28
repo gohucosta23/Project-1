@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+$(document).ready(function () {
+        $('.carousel').carousel();
+
+    });
+=======
 
     
     $(document).ready(function(){
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
 
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
@@ -93,6 +100,26 @@
 
     var favClick = $("#add-fav-click");
     favClick.on("click", function () {
+<<<<<<< HEAD
+        var cocktailInput = $("#cocktailInput");
+        var cocktailName = cocktailInput.val();
+        var drinkHistory = $(".drink-history");
+        var li = $("<li>");
+        var cocktailBtn = $("<button>");
+        cocktailBtn.addClass("fav-btn btn btn-primary");
+        cocktailBtn.attr("value", cocktailName);
+        cocktailBtn.text(cocktailName);
+        li.append(cocktailBtn);
+        li.addClass("history-list");
+        drinkHistory.append(li);
+
+        localStorage.setItem("myCocktail", cocktailName);
+        localStorage.setItem("cocktailBtn", cocktailBtn);
+        console.log(localStorage);
+        console.log(cocktailBtn);
+
+    });
+=======
 
        
         var cocktailInput = $("#cocktailInput");
@@ -116,6 +143,7 @@
 
           }
         }
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
 
     $(document).on("click", ".fav-btn", function () {
         var cocktailValue = $(this).attr("value");
@@ -145,6 +173,31 @@
                 drinkListItem.text(cocktail);
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
+<<<<<<< HEAD
+
+                var drinkKeys = Object.keys(response.drinks[i]);
+                // lines 183-194 until able to fix - these lines print ingredients to page
+                
+                var ingredientList = $("<ol>");
+                var drinkIngredients = "Ingredients are: ";
+                
+
+                for (var j = 0; j < drinkKeys.length; j++) {
+                    var drinkProperty = response.drinks[i][drinkKeys[j]];
+                    if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
+                        console.log(drinkProperty);
+                        var ingredientItem = $("<li>");
+                        ingredientItem.addClass("ingredient-list");
+                        // ingredientList.text(drinkIngredients);
+                        ingredientItem.append(drinkProperty);
+                        ingredientList.append(ingredientItem);
+                        // ingredientList.text(drinkProperty);
+                        drinkHits.append(ingredientList);
+                    }
+                }
+
+=======
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -205,5 +258,9 @@
 
 
     });
+<<<<<<< HEAD
+
+=======
     renderFavs();
 });
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
