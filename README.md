@@ -1,6 +1,6 @@
 # Elevator Pitch
 
-#### We are glad to see everyone here in our new virtual world.  We're looking forward to showing you an awesome project designed by our team.  In response to the coronavirus we have been put in a situation where social distancing is the responsible thing to do. We’re not for sure that this is not going to become a normal response to biological threats.  One of the things you cannot do currently is go out to your favorite Boteco and have a drink with your friends.  So in an effort to create a little more fun and positivity in our virtual worlds we have created Bottega virtual.  We have a very fun homepage designed by Hugo and it is meant to brighten your day. Our virtual bar uses third party APIs to find recipes that you can prepare at home.  We chose to incorporate Materialize as our css Library.  Materialize allows our application to dynamically work across several different platforms.  So if you choose to visit Boteco Virtual on your phone, your iPad, or your desktop you will have a pleasant experience.  
+#### We are glad to see everyone here in our new virtual world.  We're looking forward to showing you an awesome project designed by our team.  In response to the coronavirus we have been put in a situation where social distancing is the responsible thing to do. We’re not for sure that this is not going to become a normal response to biological threats.  One of the things you cannot do currently is go out to your favorite Boteco and have a drink with your friends.  So in an effort to create a little more fun and positivity in our virtual worlds we have created Boteco Virtual.  We have a very fun homepage designed by Hugo and it is meant to brighten your day. Our virtual bar uses third party APIs to find recipes that you can prepare at home.  We chose to incorporate Materialize as our css Library.  Materialize allows our application to dynamically work across several different platforms.  So if you choose to visit Boteco Virtual on your phone, your iPad, or your desktop you will have a pleasant experience.  
 
 # Normalize
 
@@ -9,7 +9,7 @@
 
 # Materialize
 
-#### Materialize is an awesome css library we used to assist with formating of css.  Materilize was created with HTML, CSS, and javascript.  It is easy to learn once you have a basice understanding of css and html.  It helps to create beautiful, fast loading, and responsive web sites. Materialize uses a grid system similiar to bootstrap.  When you move between different devices and screen sizes materialize provides graceful degradation.  Materialize is inspired from Google Material Design.  It is used by many companies and you will likely come across it in your future jobs as a web developer.   
+#### Materialize is an awesome css library we used to assist with formating of css.  Materilize was created with HTML, CSS, and javascript.  It is easy to learn once you have a basice understanding of css and html.  It helps to create beautiful, fast loading, and responsive web sites. Materialize uses a grid system similiar to bootstrap.  When you move between different devices and screen sizes Materialize provides graceful degradation.  Materialize is inspired from Google Material Design.  It is used by many companies and you will likely come across it in your future jobs as a web developer.   
 
 # Drink API
  
