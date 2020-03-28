@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Asset&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<<<<<<< HEAD
+    <title>Home Page</title>
+=======
     <title>Document</title>
     <link rel="stylesheet" href="../Project-1/home.css">
+>>>>>>> 2a90d15fe09188bef76a34f761e7471a1ba7c15c
 </head>
 <style>
-    body {
-        background-image: url("https://img.freepik.com/free-vector/bar-interior-realistic-composition_1284-24320.jpg?size=626&ext=jpg");
-        background-repeat: no-repeat;
-        background-position: left top;
-        background-size: 100%;
-        
-    }
     #sign {
         border: 20px white dotted;
-        border-radius: 5px;
+        border-radius: 1rem;
         background-color: black;
         color: white;
-        padding: 50px;
-        width: 500px;
         text-align: center;
         font-family: 'Asset', cursive;
+<<<<<<< HEAD
+        margin: auto;
+    }
+
+    #buttons2,
+    #buttons1 {
+        width: 6rem;
+        height: 6rem;
+        margin-top: 2rem;
+        padding-top: 1rem;
+
+    }
+</style>
+<div id="sign" class="header center red-text">
+    <h3>BOTECO VIRTUAL</h3>
+</div>
+=======
         font-size: 30px;
         margin: auto;
         margin-top: 35px;
@@ -54,8 +67,81 @@
     </div>
     <a class="btn-floating btn-large black pulse" id="buttons1"><div class="text2">HUNGRY?</div></a>
     <a class="btn-floating right btn-large black pulse" id="buttons2"><div class="text2">THIRSTY?</div></a>
+>>>>>>> 2a90d15fe09188bef76a34f761e7471a1ba7c15c
 
+<body class="black">
+    <div class="container row">
+        <a class="btn-floating btn-large red pulse" id="buttons1">
+            HUNGRY
+        </a>
+        <a class="btn-floating btn-large red pulse right" id="buttons2">
+            THIRSTY
+        </a>
+    </div>
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="images/IMG_2797.jpg">
+            </li>
+            <li>
+                <img src="images/IMG_2798.jpg">
+            </li>
+            <li>
+                <img src="images/IMG_2799.jpg"> 
+            </li>
+            <li>
+                <img src="images/IMG_2800.jpg"> 
+            </li>
+        </ul>
+    </div>
+    </div>
     <script>
+<<<<<<< HEAD
+            $(document).ready(function(){
+    $('.slider').slider();
+  });
+    </script>
+    <script>
+        $(document).ready(function () {
+            var recipeBtn = $("#buttons1");
+            var drinkBtn = $("#buttons2");
+
+            recipeBtn.on("click", function () {
+                window.location = "recipes.html";
+            })
+
+            drinkBtn.on("click", function () {
+                window.location = "index-copy-2.html";
+            })
+            // recipeBtn.hover(function () {
+                // var text = $(this).text();
+                // $(this).text("hello");
+            // }, function () {
+                // $(this).text(text);
+            // });
+
+            function blink() {
+
+
+                if ($("#sign").css("border-color") === "rgb(255, 255, 255)") {
+
+                    $("#sign").css("border-color", "yellow");
+                }
+                else {
+
+                    $("#sign").css("border-color", "rgb(255, 255, 255)");
+                }
+
+            }
+            setInterval(blink, 500);
+        });
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
+=======
 
         $(document).ready(function(){
 
@@ -112,3 +198,4 @@
 
 
 
+>>>>>>> 2a90d15fe09188bef76a34f761e7471a1ba7c15c
