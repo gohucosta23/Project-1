@@ -19,15 +19,66 @@ body {
     margin-top: 35px;
 }
 
-#buttons2, #buttons1 {
+ #buttons2, #buttons1 {
     width: 200px;
     height: 200px;
     font-size: 40px;
     margin-left: 50px;
     margin-right: 50px;
+    padding-top: 50px;
    
 }
-p {
-    margin: auto;
-    margin-top: 75px;
+
+.text2 {
+    margin-top: 20px;
+    font-weight: bolder;
+    color: red;
 }
+.text1 {
+    margin-top: -40px;
+    font-weight: bolder;
+    color : red;
+}
+@media screen and (min-width: 360px) and (max-width: 500px){
+body {
+    background-image: none;
+    background-color: teal;
+} 
+#sign {
+    margin-top: 0;
+}
+#buttons1 {
+    
+    margin-left: 152px;
+    margin-top: 80px;
+    
+}
+#buttons2{
+
+    margin-top: 50px;
+    margin-right: 20px;
+    
+}
+      
+}
+@media screen and (min-width: 501px) and (max-width: 768px){
+body {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaTy5laQPZan40bzFH68Fs-I5Db9EvwCYasraSzM109Vi1Mp8U");
+    background-repeat: repeat-y;
+}
+#buttons2{
+
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+    
+}
+
+#buttons1 {
+    width: 200px;
+    height: 200px;
+    margin-top: 100px;
+   
+}
+  
+}  

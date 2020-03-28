@@ -8,16 +8,28 @@ $(document).ready(function(){
     })
 
     drinkBtn.on("click", function(){
-        window.location = "cocktail.html";
-    })  
-    recipeBtn.hover(function(){
-        var text = $(this).text();
-        $(this).text("hello");
-    }, function(){
-        $(this).text(text);
-    });
+        window.location = "Jake-file.html";
+    })        
+     
+    recipeBtn.mouseenter(function(){
+       
+        $(this).children("div").text("Click here for recipes").attr("class", "text1");
 
-   function blink(){
+    }).mouseleave(function(){
+
+        $(this).children("div").text("HUNGRY?").attr("class", "text2");
+    })
+
+    drinkBtn.mouseenter(function(){
+        
+        $(this).children("div").text("Click here for Drinks").attr("class", "text1"); 
+
+    }).mouseleave(function(){
+        
+        $(this).children("div").text("THIRSTY?").attr("class", "text2");
+    })
+
+   function flash(){
 
         
          if($("#sign").css("border-color") === "rgb(255, 255, 255)"){
@@ -30,5 +42,5 @@ $(document).ready(function(){
          }
                     
     }
-   setInterval(blink, 500);
+   setInterval(flash, 500);
 });
