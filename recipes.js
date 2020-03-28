@@ -20,6 +20,7 @@ $(document).ready(function () {
     var favoriteRecipeStorage = JSON.parse(localStorage.getItem("Favorite Recipes")) || [];
     
     var recipes = [];
+    
    
     // Checking to see if there is anything in Local Storage and running getRecipes with 
     // last Item in the local storage array.
@@ -65,6 +66,7 @@ $(document).ready(function () {
         console.log("working");
 
         $("#audioClip").get(0).load();
+        $("#audioClip").get(0).play();                
         $("#audioClip").get(0).play();
    
          
