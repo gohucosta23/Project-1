@@ -12,9 +12,8 @@ $(document).ready(function () {
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
     var drinkHits = $(".drink-hits");
-    var myFavorites = JSON.parse(localStorage.getItem("FavoriteDrinks")) || [];
-    
-    if(myFavorites.length > 0){
+    var myFavorites = JSON.parse(localStorage.getItem('FavoriteDrinks') || []);
+    console.log(myFavorites);
 
         drinkSearch(myFavorites[myFavorites.length - 1])
         }

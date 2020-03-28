@@ -20,10 +20,17 @@ $(document).ready(function () {
     var favoriteRecipeStorage = JSON.parse(localStorage.getItem("Favorite Recipes")) || [];
     
     var recipes = [];
+<<<<<<< HEAD
+    // function ply() {
+    //     var x = document.getElementById("audio")
+    //     x.play()
+    // }
+=======
    
     // Checking to see if there is anything in Local Storage and running getRecipes with 
     // last Item in the local storage array.
 
+>>>>>>> 24b377da5d9adcf670628e8a474290c9fb3d16d9
     if(favoriteRecipeStorage.length > 0){
 
         getRecipes(favoriteRecipeStorage[favoriteRecipeStorage.length - 1])
@@ -47,6 +54,7 @@ $(document).ready(function () {
         $("#cuisine-type").append(links);
     };
 
+    
 
     // <---- Section for click events --->
 
@@ -56,6 +64,13 @@ $(document).ready(function () {
     $(document).on("click", ".cuisine-links", function(){
     
         cuisine = $(this).attr("data-name");
+        console.log(cuisine);
+    //Adding background music to cuisines
+    $("#musicSource").attr("src", `./Audio/${cuisine}.mp3`);
+        console.log("working");
+        $("#audioClip").get(0).load();
+        $("#audioClip").get(0).play();
+   
 
         getRecipes(cuisine);          
     
