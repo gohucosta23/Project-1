@@ -3,19 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    
+
     <title>Create your own Recipes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../Project-1/recipes.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+=======
+    <link rel="stylesheet" href="recipes.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
 
 </head>
 
 <body>
+<<<<<<< HEAD
+
+    <!-- Adding play and pause buttons for background music-->
+    <audio controls loop id="audioClip">
+
+        <!--<button type="button" onclick="playAud()">Play Music</button>
+        <button type="button" onclick="pauseAud()">Pause Music</button> -->
+
+        <!-- <source id="musicSource" src="Audio/South American.mp3" type="audio/mpeg"> -->
+        <source id="musicSource" src="./Audio/${cuisine}.mp3" type="audio/mpeg">
+        Your browser does not support HTML5 audio.
+
+    </audio>
+
+
+
+
+
+=======
     <!-- Navigation bar -->
+>>>>>>> 24b377da5d9adcf670628e8a474290c9fb3d16d9
     <nav>
         <div class="nav-wrapper indigo">
             <div class="container ">
@@ -23,10 +48,36 @@
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="recipes.html">Recipes</a></li>
+<<<<<<< HEAD
                     <li><a href="cocktail.html">Cocktails</a></li>
                 </ul>   
+=======
+                    <li><a href="index-copy-2.html">Cocktails</a></li>
+                </ul>
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
             </div>
         </div>
+<<<<<<< HEAD
+    </nav>
+    <div>
+        <div class="row" id="cuisine-type">
+            <div class="col s1">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <div class="container recipe-input">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="cuisineInput" class="input-display" placeholder="Search Recipe" type="text">
+                        <label class="input-display">
+                            <h5 style="color : black;"><strong>Looking for a specific recipe?</strong></h5>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+=======
       </nav>
         <div>
             <!-- Row with different links to different ciusine types -->
@@ -47,10 +98,19 @@
                 </div> 
                 <!-- This is where the favorite recipe button will go -->
                 <div class="row" id="favoriteRecipesDisplay">
+>>>>>>> 24b377da5d9adcf670628e8a474290c9fb3d16d9
                     <h6>Favorite Recipes :</h6>
-                </div> 
-                <div class="row" id="favoriteRecipes"></div>              
+                </div>
+                <div class="row" id="favoriteRecipes"></div>
             </div>
+<<<<<<< HEAD
+        </div>
+
+        <div class="col s6">
+            <div class="container recipe-display">
+                <div class="carousel container right">
+
+=======
         </div>   
                 <!-- This is where the carousel that displays the recipes go -->
             <div class="col s6">
@@ -58,16 +118,37 @@
                     <div class="carousel container right">
                         
                     </div>
+>>>>>>> 24b377da5d9adcf670628e8a474290c9fb3d16d9
                 </div>
             </div>
-        </div>        
         </div>
     </div>
     </div>
-    
+    </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<<<<<<< HEAD
     <script src="../Project-1/recipes.js"></script>
     
+=======
+    <script src="recipes.js">
+
+        var aud = document.getElementById("audioClip");
+
+        function playAud() {
+            //var aud = document.getElementById("audioClip");
+            aud.play();
+        };
+
+        function pauseAud() {
+            //var aud = document.getElementById("audioClip");
+            aud.pause();
+        };
+    </script>
+
+
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
 
 
 </body>

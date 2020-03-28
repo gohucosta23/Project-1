@@ -9,19 +9,116 @@
     <title>Document</title>
     <link rel="stylesheet" href="../Project-1/home.css">
 </head>
+<<<<<<< HEAD
+=======
+<style>
+    body {
+        background-image: url("https://img.freepik.com/free-vector/bar-interior-realistic-composition_1284-24320.jpg?size=626&ext=jpg");
+        background-repeat: no-repeat;
+        background-position: left top;
+        background-size: 100%;
+        
+    }
+    #sign {
+        border: 20px white dotted;
+        border-radius: 5px;
+        background-color: black;
+        color: white;
+        padding: 50px;
+        width: 500px;
+        text-align: center;
+        font-family: 'Asset', cursive;
+        font-size: 30px;
+        margin: auto;
+        margin-top: 35px;
+    }
+    
+     #buttons2, #buttons1 {
+        width: 200px;
+        height: 200px;
+        font-size: 40px;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding-top: 50px;
+       
+    }
+   
+    .text2 {
+        margin-top: 20px;
+    }
+    .text1 {
+        margin-top: -40px;
+    }
+</style>
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
 <body>
     <div id="sign">
-        BOTECO VIRTUAL
+        VIRTUAL BOTECO
     </div>
-    <a class="btn-floating btn-large black pulse" id="buttons1"><p>HUNGRY</p></a>
-    <a class="btn-floating right btn-large black pulse" id="buttons2"><p>THIRSTY</p></a>
+    <a class="btn-floating btn-large black pulse" id="buttons1"><div class="text2">HUNGRY?</div></a>
+    <a class="btn-floating right btn-large black pulse" id="buttons2"><div class="text2">THIRSTY?</div></a>
 
     <script>
 
+<<<<<<< HEAD
        
+=======
+        $(document).ready(function(){
+
+        var recipeBtn = $("#buttons1");
+        var drinkBtn = $("#buttons2");
+
+        recipeBtn.on("click", function(){
+            window.location = "recipes.html";
+        })
+
+        drinkBtn.on("click", function(){
+            window.location = "Jake-file.html";
+        })        
+         
+        recipeBtn.mouseenter(function(){
+           
+            $(this).children("div").text("Click here for recipes").attr("class", "text1");
+
+        }).mouseleave(function(){
+
+            $(this).children("div").text("HUNGRY?").attr("class", "text2");
+        })
+
+        drinkBtn.mouseenter(function(){
+            
+            $(this).children("div").text("Click here for Drinks").attr("class", "text1"); 
+
+        }).mouseleave(function(){
+            
+            $(this).children("div").text("THIRSTY?").attr("class", "text2");
+        })
+  
+       function flash(){
+    
+            
+             if($("#sign").css("border-color") === "rgb(255, 255, 255)"){
+
+                 $("#sign").css("border-color", "yellow");
+             }
+            else {         
+
+                $("#sign").css("border-color", "rgb(255, 255, 255)");
+             }
+                        
+        }
+       setInterval(flash, 500);
+    });
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
 
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="home.js"></script>
 </body>
 </html>
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 40c2cd32c4cbbb852db73c87cc6d52d86e0516c6
