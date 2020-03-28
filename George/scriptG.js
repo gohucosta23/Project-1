@@ -1,19 +1,32 @@
+<<<<<<< HEAD
 $(document).ready(function () {
         $('.carousel').carousel();
 
     });
+=======
+
+    
+    $(document).ready(function(){
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
 
     var cocktailSearch = $("#cocktailSearch");
     var recipes = $(".recipes");
     var drinkHits = $(".drink-hits");
+    var myFavorites = JSON.parse(localStorage.getItem("FavoriteDrinks")) || [];
+    
+    if(myFavorites.length > 0){
 
-    recipes.hide();
+        drinkSearch(myFavorites[myFavorites.length - 1])
+        }
+   
+    
 
     function drinkSearch(cocktailName) {
         var cocktailInput = $("#cocktailInput");
         cocktailName = cocktailInput.val();
         console.log(cocktailName);
         var drinkQueryURL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + cocktailName;
+        
 
         $(".drink-hits").empty();
         $(".images").empty();
@@ -39,22 +52,7 @@ $(document).ready(function () {
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
 
-                // var drinkKeys = Object.keys(response.drinks[i]);
-                // lines 183-194 until able to fix - these lines print ingredients to page
-                // for (var j = 0; j < drinkKeys.length; j++) {
-                //     var drinkProperty = response.drinks[i][drinkKeys[j]];
-                //     if (drinkProperty && drinkKeys[j].indexOf("strIngredient") !== -1) {
-                //         console.log(drinkProperty);
-                //         var ingredientDiv = $("<ul>");
-                //         var ingredientItem = $("<li>");
-                //         ingredientItem.addClass("ingredient-list");
-                //         ingredientItem.append(drinkProperty)
-                //         ingredientDiv.append(ingredientItem);
-                //         ingredientDiv.text(drinkProperty);
-                //         drinkHits.append(ingredientDiv);
-                //     }
-                // }
-
+                
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -103,6 +101,7 @@ $(document).ready(function () {
 
     var favClick = $("#add-fav-click");
     favClick.on("click", function () {
+<<<<<<< HEAD
         var cocktailInput = $("#cocktailInput");
         var cocktailName = cocktailInput.val();
         var drinkHistory = $(".drink-history");
@@ -121,6 +120,31 @@ $(document).ready(function () {
         console.log(cocktailBtn);
 
     });
+=======
+
+       
+        var cocktailInput = $("#cocktailInput");
+        var cocktailName = cocktailInput.val(); 
+        
+        myFavorites.push(cocktailName);
+        prompt(myFavorites)
+        var button1= $('#1')
+        button1.removeClass("hide");
+        button1.text(myFavorites);
+
+    function renderFavs(){
+        $("#buttonDisplay").empty();
+        for (var i=0; i < myFavorites.length; i++){
+        
+           var buttons = $("<button>");
+           buttons.attr("data-name", myFavorites[i]);
+           buttons.text(myFavorites[i]); 
+           $("#buttonDisplay").append(buttons);
+          
+
+          }
+        }
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
 
     $(document).on("click", ".fav-btn", function () {
         var cocktailValue = $(this).attr("value");
@@ -150,6 +174,7 @@ $(document).ready(function () {
                 drinkListItem.text(cocktail);
                 var cocktail = response.drinks[i].strDrink;
                 var instructions = response.drinks[i].strInstructions;
+<<<<<<< HEAD
 
                 var drinkKeys = Object.keys(response.drinks[i]);
                 // lines 183-194 until able to fix - these lines print ingredients to page
@@ -172,6 +197,8 @@ $(document).ready(function () {
                     }
                 }
 
+=======
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
                 drink.text(cocktail + ": " + instructions);
                 drinkHits.append(drink);
                 var card = $(".images");
@@ -232,4 +259,9 @@ $(document).ready(function () {
 
 
     });
+<<<<<<< HEAD
 
+=======
+    renderFavs();
+});
+>>>>>>> 2ddbd6fc8054f3196d2a4c67c71fcfeb9cd6103b
