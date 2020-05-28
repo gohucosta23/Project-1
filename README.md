@@ -25,7 +25,7 @@ Music: https://www.bensound.com
 
 Bhangra Bass by Punch Deck | https://soundcloud.com/punch-deck Music promoted by https://www.free-stock-music.com Creative Commons Attribution 3.0 Unported License https://creativecommons.org/licenses/by/3.0/deed.en_US
 
-# Demo 
+# Links 
 
-#### Walk through the website and ask if anyone has questions.
+<p>Check it out the browser <a href = "https://gohucosta23.github.io/Project-1/" target = "blank">here</a></p>
 
